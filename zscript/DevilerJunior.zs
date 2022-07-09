@@ -506,34 +506,6 @@ Class BabyDeviler : HDMobBase
 				BWRM A 2 A_LilDevilBabRandomRunawayNoPainScoot;
 				BWRM AB 3 A_SetAngle(angle+random(-15,15));
 				Goto See;
-		Melee:
-				BWRM A 0 A_SpawnItemEx("BTail1",-5,0,0,0,0,0,0,0,0);
-				BWRM A 1 A_LilDevilBabRandomForwardHop;
-				BWRM AB 3 A_SetAngle(angle+random(-15,15));
-				BWRM AB 1 A_TryWimpyLatch();
-		postmelee:
-				BWRM B 6 A_CustomMeleeAttack(random(1,8),"","","teeth",true);
-				TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,10);} //BURRRRN
-				BWRM A 0 setstatelabel("see");
-		latched:
-				BWRM EF random(1,2);
-				BWRM A 0 A_JumpIf(!latchtarget,"pain");
-				loop;
-		fly:
-				BWRM F 1
-					{
-					A_TryWimpyLatch();
-						if
-							(bonmobj||floorz>=pos.z||vel.xy==(0,0))setstatelabel("land");
-						else if
-							(max(abs(vel.x),abs(vel.y)<3))vel.xy+=(cos(angle),sin(angle))*0.1;
-					}
-					wait;
-		land:
-				BWRM FEH 3{vel.xy*=0.8;}
-				BWRM D 4{vel.xy=(0,0);}
-				BWRM ABCD 3 A_HDChase("melee",null);
-				BWRM A 0 setstatelabel("see");
 		Missile:
 		CheckRange:
 				TNT1 A 0 A_jumpIfCloser(750,"IntheRangeofBabbyFlamethrower");
@@ -656,14 +628,15 @@ Class BabyDeviler : HDMobBase
 				SKUL CD 1 A_TryWimpyLatch();
 				loop;
     	Melee:
-				TNT1 A 0 A_Jump(256,"StandardMelee","NOPERUN","Lunge");
+				TNT1 A 0 A_Jump(256,"StandardMelee","GonnaBiteYerHeadOff","NOPERUN","Lunge");
 				Goto See;
     	StandardMelee:
 				BWRM B 5 A_FaceTarget;
     			BWRM A 1 A_LilDevilBabBite();
 				BWRM A 10 A_LilDevilBabRandomRunawayScoot;
+				TNT1 A 0 A_Jump(45,"GonnaBiteYerHeadOff");
     			Goto See;
-			NOPERUN:
+		NOPERUN:
 				BWRM A 0 A_SpawnItemEx("BTail1",-5,0,0,0,0,0,0,0,0);
 				BWRM A 0 A_SpawnItemEx("BTail1",-5,0,0,0,0,0,0,0,0);
 				BWRM A 0 A_SpawnItemEx("BTail1",-5,0,0,0,0,0,0,0,0);
@@ -674,6 +647,36 @@ Class BabyDeviler : HDMobBase
 				BWRM B 1 A_LilDevilBabRandomRunawayNoPainScoot;
 				TNT1 A 0 A_Jump(45,"GonnaSPITatYou");
 				goto see;
+				Goto See;
+		GonnaBiteYerHeadOff:
+				BWRM A 0 A_SpawnItemEx("BTail1",-5,0,0,0,0,0,0,0,0);
+				BWRM A 1 A_LilDevilBabRandomForwardHop;
+				BWRM AB 3 A_SetAngle(angle+random(-15,15));
+				BWRM AB 1 A_TryWimpyLatch();
+		postmelee:
+				BWRM B 6 A_CustomMeleeAttack(random(1,8),"","","teeth",true);
+				TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,10);} //BURRRRN
+				BWRM A 0 setstatelabel("see");
+		latched:
+				BWRM EF random(1,2);
+				BWRM A 0 A_JumpIf(!latchtarget,"pain");
+				loop;
+		fly:
+				BWRM F 1
+					{
+					A_TryWimpyLatch();
+						if
+							(bonmobj||floorz>=pos.z||vel.xy==(0,0))setstatelabel("land");
+						else if
+							(max(abs(vel.x),abs(vel.y)<3))vel.xy+=(cos(angle),sin(angle))*0.1;
+					}
+					wait;
+		land:
+				BWRM FEH 3{vel.xy*=0.8;}
+				BWRM D 4{vel.xy=(0,0);}
+				BWRM ABCD 3 A_HDChase("melee",null);
+				BWRM A 0 setstatelabel("see");
+				
     	Pain:
 				TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,30);} //yes punch the VISIBLY BURNING WORM
     			BWRM A 0 A_SpawnItemEx("BTail1",-5,0,0,0,0,0,0,0,0);
