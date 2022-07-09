@@ -1,0 +1,32 @@
+flickerlight  Wretched
+{
+    color 256 0 0
+    size 12
+	secondarySize 18
+} 
+object Wretched
+{
+    Frame GHST { light Wretched }
+}
+pulselight BloodghostPickup
+{
+    color 256 0 0
+    size 10
+    secondarySize 20
+    interval 5
+} 
+object GhostHealthBonus
+{
+    Frame GHPK { light BloodghostPickup }
+}
+pulselight BloodghostBall
+{
+    color 256 0 0
+    size 2
+    secondarySize 6
+    interval 0.5
+} 
+object GhostBall
+{
+    Frame GBOM { light BloodghostBall }
+}

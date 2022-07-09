@@ -1,0 +1,54 @@
+// Possessed Skull
+bad/attack			dsfirsht
+bad/shotx			dsfirxpl
+bad/active			dsdmact
+bad/death			dsskedth
+
+PosSkul/trickery 	
+
+$random PosSkul/trickery  { shellshade/active freshgrunt/sight freshgrunt/active putto/sight caco/charge vile/curse marine/taunt }
+
+//Wretched 
+
+WATTACK		WATTACK
+WDEATH		WDEATH
+WHIT		WHIT
+WIDLE1		WIDLE1
+WIDLE2		WIDLE2
+WPAIN		WPAIN
+WSIGHT		WSIGHT
+WHIT2		WHIT2
+
+$RANDOM WIDLE { WIDLE1 WIDLE2 }
+
+//Deviler Series
+//Baby//
+BWorm/Sight B_SIGHT
+BWorm/Flinch B_FLINCH
+BWorm/Idle B_IDLE
+BWorm/Bite B_BITE
+
+//Teen//
+TWorm/Sight T_SIGHT
+TWorm/Flinch T_FLINCH
+TWorm/Idle T_IDLE
+TWorm/Bite T_BITE
+
+//Adult//
+AWorm/Sight A_SIGHT
+AWorm/Flinch A_FLINCH
+AWorm/Idle A_IDLE
+AWorm/Bite A_BITE
+
+//Elder//
+EWorm/Sight E_SIGHT
+EWorm/Flinch E_FLINCH
+EWorm/Idle E_IDLE
+EWorm/Bite E_BITE
+
+Worm/Death DEATH
+Worm/Hurt HIT
+Worm/Burrow BURROW
+Worm/Digging DIGGIN
+Worm/Splat SPLAT
+Worm/Rock dspunch

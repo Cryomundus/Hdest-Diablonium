@@ -1,0 +1,8 @@
+DoomEdNums{
+
+// Monsters
+	24201=babyDeviler
+	24202=teenDeviler
+	24203=wretchedGhoul
+	
+	}
