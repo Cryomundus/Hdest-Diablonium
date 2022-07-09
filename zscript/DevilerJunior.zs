@@ -511,7 +511,7 @@ Class BabyDeviler : HDMobBase
 				TNT1 A 0 A_jumpIfCloser(750,"IntheRangeofBabbyFlamethrower");
 				TNT1 A 0 A_jumpIfCloser(2500,"TooFarForToastingSoSitNSpit");
 		IntheRangeofBabbyFlamethrower:
-				TNT1 A 0 A_Jump(256,"NormalJump","Lunge","SteamingHotPrep");
+				TNT1 A 0 A_Jump(256,"NormalJump","GonnaBiteYerHeadOff","Lunge","SteamingHotPrep");
 				Goto See;
 		TooFarForToastingSoSitNSpit:
 				TNT1 A 0 A_Jump(256,"NormalJump","GonnaSPITatYou");
