@@ -476,7 +476,6 @@ Class BabyDeviler : HDMobBase
 
 				if((target&&checksight(target))||!random(0,7))setstatelabel("DevilerPicksAnAction");else setstatelabel("spwander");
 			}
-			TNT1 A 0 
 		DevilerPicksAnAction:
 			TNT1 A 0 A_Jump(256, "ScootRandom", "ScootForward", "HopForward","ScootAway");
 			ScootRandom:
