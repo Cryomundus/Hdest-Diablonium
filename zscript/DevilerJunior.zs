@@ -23,8 +23,6 @@ Class BabyDeviler : HDMobBase
 				setstatelabel("see");
 				return;
 			}	
-			setstatelabel("latched");
-			}
 		}
 		double checkrange=!!target?(target.radius*HDCONST_SQRTTWO)+meleerange:0;
 		if(
