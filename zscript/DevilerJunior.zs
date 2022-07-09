@@ -458,7 +458,7 @@ Class BabyDeviler : HDMobBase
 			}
 			loop;
 		See:
-			//restore because shenanigens
+			BWRM A 0 //restore because shenanigens
 			{
 
 				if(!checkmove(pos.xy,true)&&blockingmobj)
