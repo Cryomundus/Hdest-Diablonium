@@ -1,0 +1,5 @@
+Actor SkullColRealOrFakeSpawner : RandomSpawner replaces SkullColumn
+{
+		DropItem "FakePosSkulCol", 255, 25
+		DropItem "HarmlessSkulCol", 255, 75
+}
