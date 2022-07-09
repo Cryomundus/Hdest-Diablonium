@@ -29,3 +29,5 @@ Sprites: Exhumed / Powerslave
 Sprite Edits: Doomedarchviledemon
 Sounds: Serious Sam, Freesounds
 Idea Base: Tremors
+
+Latching code taken from babuin.zs from hideousdestructor by Matt, also known as mc776
