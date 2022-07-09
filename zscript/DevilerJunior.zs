@@ -10,7 +10,7 @@ Class BabyDeviler : HDMobBase
 		override void postbeginplay()
 		{
 			super.postbeginplay();
-			resize(0.9,1.1);
+			resize(0.7,1.0);
 			A_GiveInventory("ImmunityToFire");
 			lastpointinmap=pos;
 			lastpointinmap=pos;
@@ -564,6 +564,8 @@ Class BabyDeviler : HDMobBase
 				BWRM A 2 bright A_LilDevilBabRandomRunawayNoPainScoot();
 				BWRM A 1 bright ThrustThingZ (0, 20, 0, 0);
 				BWRM A 0 bright A_LilDevilBabTheNotsoGreatSpew();
+				BWRM A 2 A_LilDevilBabRandomRunawayNoPainScoot;
+				BWRM A 4 A_HDChase();
 				goto see;
 		SteamingHotPrep:
 				BWRM A 0 A_jumpIfCloser(25,"Melee");
@@ -613,6 +615,8 @@ Class BabyDeviler : HDMobBase
 				BWRM A 1 bright A_LilDevilBabisSteamingHOTRight();
 				BWRM A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
 				BWRM A 0 bright A_LilDevilBabTheHorribleFireVomit();
+				BWRM A 2 A_LilDevilBabRandomRunawayNoPainScoot;
+				BWRM A 4 A_HDChase();
 				goto see;
 		MidLeap:
 				BWRM A 0 A_SpawnItemEx("BTail1",-17,0,0,0,0,0,0,0,0);
@@ -655,14 +659,14 @@ Class BabyDeviler : HDMobBase
 				BWRM AB 1 A_TryWimpyLatch();
 		postmelee:
 				BWRM B 6 A_CustomMeleeAttack(random(1,8),"","","teeth",true);
-				TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,10);} //BURRRRN
+				BWRM A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,10);} //BURRRRN
 				BWRM A 0 setstatelabel("see");
 		latched:
-				BWRM EF random(1,2);
+				BWRM AB random(1,2);
 				BWRM A 0 A_JumpIf(!latchtarget,"pain");
 				loop;
 		fly:
-				BWRM F 1
+				BWRM AB 1
 					{
 					A_TryWimpyLatch();
 						if
@@ -672,9 +676,9 @@ Class BabyDeviler : HDMobBase
 					}
 					wait;
 		land:
-				BWRM FEH 3{vel.xy*=0.8;}
-				BWRM D 4{vel.xy=(0,0);}
-				BWRM ABCD 3 A_HDChase("melee",null);
+				BWRM ABC 3{vel.xy*=0.8;}
+				BWRM C 4{vel.xy=(0,0);}
+				BWRM ABC 3 A_HDChase("melee",null);
 				BWRM A 0 setstatelabel("see");
 				
     	Pain:
