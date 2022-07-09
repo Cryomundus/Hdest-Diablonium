@@ -23,7 +23,7 @@ Class BabyDeviler : HDMobBase
 				setstatelabel("see");
 				return;
 			}	
-		}
+			
 		double checkrange=!!target?(target.radius*HDCONST_SQRTTWO)+meleerange:0;
 		if(
 			health<1
@@ -513,28 +513,28 @@ Class BabyDeviler : HDMobBase
 				BWRM AB 3 A_SetAngle(angle+random(-15,15));
 				BWRM AB 1 A_TryWimpyLatch();
 		postmelee:
-				#### G 6 A_CustomMeleeAttack(random(1,8),"","","teeth",true);
+				BWRM B 6 A_CustomMeleeAttack(random(1,8),"","","teeth",true);
 				TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,10);} //BURRRRN
-				---- A 0 setstatelabel("see");
+				BWRM A 0 setstatelabel("see");
 		latched:
-				#### EF random(1,2);
-				#### A 0 A_JumpIf(!latchtarget,"pain");
+				BWRM EF random(1,2);
+				BWRM A 0 A_JumpIf(!latchtarget,"pain");
 				loop;
 		fly:
-			#### F 1
-				{
-				A_TryWimpyLatch();
-					if
-						(bonmobj||floorz>=pos.z||vel.xy==(0,0))setstatelabel("land");
-					else if
-						(max(abs(vel.x),abs(vel.y)<3))vel.xy+=(cos(angle),sin(angle))*0.1;
-				}
-				wait;
-	land:
-		#### FEH 3{vel.xy*=0.8;}
-		#### D 4{vel.xy=(0,0);}
-		#### ABCD 3 A_HDChase("melee",null);
-		---- A 0 setstatelabel("see");
+				BWRM F 1
+					{
+					A_TryWimpyLatch();
+						if
+							(bonmobj||floorz>=pos.z||vel.xy==(0,0))setstatelabel("land");
+						else if
+							(max(abs(vel.x),abs(vel.y)<3))vel.xy+=(cos(angle),sin(angle))*0.1;
+					}
+					wait;
+		land:
+				BWRM FEH 3{vel.xy*=0.8;}
+				BWRM D 4{vel.xy=(0,0);}
+				BWRM ABCD 3 A_HDChase("melee",null);
+				BWRM A 0 setstatelabel("see");
 		Missile:
 		CheckRange:
 				TNT1 A 0 A_jumpIfCloser(750,"IntheRangeofBabbyFlamethrower");
