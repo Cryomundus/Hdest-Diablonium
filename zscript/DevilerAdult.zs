@@ -229,7 +229,7 @@ Class AdultDeviler : HDMobBase
 	{
 		//$Category Worms;
 		Obituary "%o was incinerated by an Adult Deviler." ;
-		health 500;
+		health 400;
 		hdmobbase.shields 125;
 		radius 14;
 		height 40;
@@ -266,7 +266,7 @@ Class AdultDeviler : HDMobBase
 				bShootable=False;
 				A_facetarget();
 				A_SetAngle(angle+random(-15,15));
-				ThrustThingZ (0, random(2,6), 0, 0);
+				ThrustThingZ (0, random(6,14), 0, 0);
 				spawn("Roc1",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("Roc2",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("Roc3",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
@@ -282,7 +282,7 @@ Class AdultDeviler : HDMobBase
 			{
 				bShootable=True;
 				A_facetarget();
-				ThrustThingZ (0, 7, 0, 0);
+				ThrustThingZ (0, 10, 0, 0);
 				spawn("Roc4",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("Roc5",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("Roc6",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
@@ -310,11 +310,11 @@ Class AdultDeviler : HDMobBase
 			void A_BigBoyDevilerChomp()
 			{
 				A_facetarget();
-				ThrustThingZ (0, random(2,10), 0, 0);
+				ThrustThingZ (0, random(6,14), 0, 0);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
-				ThrustThing(angle*256/360, random(2,4), 1, 0);
+				ThrustThing(angle*256/360, random(1,3), 1, 0);
 				A_CustomMeleeAttack(random(12,20), "BWorm/Bite","","teeth",true);
 			}
 			void A_BigBoyDevilerForwardScoot()
@@ -322,7 +322,7 @@ Class AdultDeviler : HDMobBase
 				A_HDChase();
 				A_facetarget();
 				spawn("MiniHDSmoke",pos,ALLOW_REPLACE);
-				ThrustThing(angle*256/360, random(5,9), 1, 0);
+				ThrustThing(angle*256/360, random(1,3), 1, 0);
 			}
 			void A_BigBoyDevilerRandomForwardScoot()
 			{
@@ -330,18 +330,18 @@ Class AdultDeviler : HDMobBase
 				A_facetarget();
 				A_SetAngle(angle+random(-15,15));
 				spawn("MiniHDSmoke",pos,ALLOW_REPLACE);
-				ThrustThing(angle*256/360, random(5,9), 1, 0);
+				ThrustThing(angle*256/360, random(1,3), 1, 0);
 			}
 			void A_BigBoyDevilerRandomForwardHop()
 			{
 				A_HDChase();
 				A_facetarget();
 				A_SetAngle(angle+random(-15,15));
-				ThrustThingZ (0, random(6,10), 0, 0);
+				ThrustThingZ (0, random(6,14), 0, 0);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
-				ThrustThing(angle*256/360, random(5,9), 1, 0);
+				ThrustThing(angle*256/360, random(1,3), 1, 0);
 			}
 			
 			void A_BigBoyDevilerWanderingRandomForwardHop()
@@ -349,11 +349,11 @@ Class AdultDeviler : HDMobBase
 				A_HDWander();
 				A_facetarget();
 				A_SetAngle(angle+random(-15,15));
-				ThrustThingZ (0, random(6,10), 0, 0);
+				ThrustThingZ (0, random(6,14), 0, 0);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
-				ThrustThing(angle*256/360, random(5,9), 1, 0);
+				ThrustThing(angle*256/360, random(1,3), 1, 0);
 			}
 			
 			void A_BigBoyDevilerTHEBIGDIVE()
@@ -368,14 +368,14 @@ Class AdultDeviler : HDMobBase
 				A_Pain();
 				//A_HDChase();
 				A_SetAngle(angle+random(-90,90));
-				ThrustThingZ (0, 2, 0, 0);
+				ThrustThingZ (0, 7, 0, 0);
 				spawn("MiniHDSmoke",pos,ALLOW_REPLACE);
 				ThrustThing(angle*256/360, random(5,10), 1, 0);
 			}
 			void A_BigBoyDevilerRandomRunawayNoPainScoot()
 			{	
 				A_SetAngle(angle+180);
-				ThrustThingZ (0, 4, 0, 0);
+				ThrustThingZ (0, 7, 0, 0);
 				spawn("MiniHDSmoke",pos,ALLOW_REPLACE);
 				ThrustThing(angle*256/360, random(5,10), 1, 0);
 			}	
@@ -387,7 +387,7 @@ Class AdultDeviler : HDMobBase
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
-				ThrustThing(angle*256/360, random(2,4), 1, 0);
+				ThrustThing(angle*256/360, random(1,3), 1, 0);
 			}
 			void A_BigBoyDevilerisSteamingHOTRight()
 			{
@@ -397,19 +397,20 @@ Class AdultDeviler : HDMobBase
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
-				ThrustThing(angle*256/360, random(2,4), 1, 0);
+				ThrustThing(angle*256/360, random(1,3), 1, 0);
 			}
 			void A_BigBoyDevilerThePrettyGoodSpit()
 			{
 				A_HDChase();
 				A_facetarget();
 				//A_SetAngle(angle+random(-15,15));
-				ThrustThingZ (0, 9, 0, 0);
-				A_SpawnProjectile("HDImpBall",14,0,18,2,0);
+				ThrustThingZ (0, 12, 0, 0);
+				A_SpawnProjectile("BigBoyBlazerShot",38,0,2,0,0);
+				A_SpawnProjectile("BigBoyBlazerShot",38,0,-2,0,0);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
-				//ThrustThing(angle*256/360, random(2,4), 1, 0);
+				//ThrustThing(angle*256/360, random(1,3), 1, 0);
 			}
 			void A_BigBoyDevilerTheHorribleFireVomit()
 			{
@@ -423,7 +424,7 @@ Class AdultDeviler : HDMobBase
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
-				ThrustThing(angle*256/360, random(2,4), 1, 0);
+				ThrustThing(angle*256/360, random(1,3), 1, 0);
 			}
 	States
 	{
@@ -750,21 +751,20 @@ class HDBigBoyFlamer : HDWimpyFireBall
 			missiletype "HDWimpyFireBallTail";
 			damagetype "hot";
 			speed 24;
-			scale 0.8;
+			scale 0.5;
 			damage (8);
-			reactiontime 3;
+			reactiontime 20;
 			gravity 0.15;
-			translation "168:181=224:231", "182:191=160:165";
 		}
 	states
 			{
 	spawn:
 			
-			MANF ABABABAB 1 A_FBTail();
+			ADBS ABABABAB 1 A_FBTail();
 			goto spawn2;
 	spawn2:
-			MANF A 0 A_countdown;
-			MANF AB 3 A_HDIBFly();
+			ADBS A 0 A_countdown;
+			ADBS AB 3 A_HDIBFly();
 			loop;
 	death:
 			TNT1 AAA 0 A_SpawnItemEx("HDSmoke",flags:SXF_NOCHECKPOSITION);
@@ -772,6 +772,67 @@ class HDBigBoyFlamer : HDWimpyFireBall
 			goto super::death;
 		}
 	}
+	
+class BigBoyBlazerShotTail:HDActor{
+	default{
+		+nointeraction
+		+forcexybillboard
+		renderstyle "add";
+		alpha 0.6;
+		scale 0.7;
+	}
+	states{
+	spawn:
+		ADBS E 2 bright A_FadeOut(0.2);
+		TNT1 A 0 A_StartSound("baron/ballhum",volume:0.4,attenuation:6.);
+		loop;
+	}
+}
+
+class BigBoyBlazerShot:MiniBBall{
+	default{
+		scale 0.8
+		damage (12);
+	}
+	int user_counter;
+	override void postbeginplay(){
+		super.postbeginplay();
+
+		let hdmb=hdmobbase(target);
+		if(hdmb)hdmb.firefatigue+=int(HDCONST_MAXFIREFATIGUE*0.1);
+	}
+	states{
+	spawn:
+		ADBS EDC 1 bright;
+		ADBS ABABA 2 bright;
+		ADBS BAB 3 bright;
+	spawn2:
+		ADBS A 2 bright A_SeekerMissile(5,10);
+		ADBS B 2 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		ADBS A 2 bright A_SeekerMissile(5,9);
+		ADBS B 2 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		ADBS A 2 bright A_SeekerMissile(4,8);
+		ADBS B 2 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		ADBS A 2 bright A_SeekerMissile(3,6);
+		ADBS B 2 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+	spawn3:
+		TNT1 A 0 A_JumpIf(user_counter>4,"spawn4");
+		TNT1 A 0 {user_counter++;}
+		ADBS A 3 bright A_SeekerMissile(1,1);
+		ADBS B 3 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		loop;
+	spawn4:
+		ADBS A 3 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		TNT1 A 0 A_JumpIf(pos.z-floorz<10,2);
+		ADBS B 3 bright A_ChangeVelocity(frandom(-0.2,1),frandom(-1,1),frandom(-1,0.9),CVF_RELATIVE);
+		loop;
+		ADBS B 3 bright A_ChangeVelocity(frandom(-0.2,1),frandom(-1,1),frandom(-0.6,1.9),CVF_RELATIVE);
+		loop;
+	death:
+		ADBS CDE 4 bright A_FadeOut(0.2);
+		stop;
+	}
+}
 
 Class ATail1 : Actor
 {
