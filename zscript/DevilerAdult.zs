@@ -225,12 +225,19 @@ Class AdultDeviler : HDMobBase
 		}
 		else super.Tick();
 	}
+	
+	override double bulletshell(vector3 hitpos,double hitangle){
+		return frandom(3,7);
+	}
+	override double bulletresistance(double hitangle){
+		return max(0,frandom(0.8,1.)-hitangle*0.008);
+	}
 	default
 	{
 		//$Category Worms;
 		Obituary "%o was incinerated by an Adult Deviler." ;
 		health 400;
-		hdmobbase.shields 125;
+		hdmobbase.shields 200;
 		radius 14;
 		height 40;
 		mass 250;
@@ -253,6 +260,8 @@ Class AdultDeviler : HDMobBase
 		+hdmobbase.chasealert
 		+hdmobbase.climber
 		+hdmobbase.climbpastdropoff
+		amagefactor "balefire",0.3;
+		damagefactor "cold",1.4; //originating from a volcanic planet, they have a bit of a weakness to cold.
 		damagefactor "Thermal",0.1; //devilers as a whole originated in a highly volcanic planet, they're functionally immune to heat.
 		damagefactor "hot",0; //similarly, takes no damage if on fire.
 		meleerange 126;
@@ -752,7 +761,7 @@ class HDBigBoyFlamer : HDWimpyFireBall
 			damagetype "hot";
 			speed 24;
 			scale 0.5;
-			damage (8);
+			damage (4);
 			reactiontime 20;
 			gravity 0.15;
 		}
@@ -768,7 +777,7 @@ class HDBigBoyFlamer : HDWimpyFireBall
 			loop;
 	death:
 			TNT1 AAA 0 A_SpawnItemEx("HDSmoke",flags:SXF_NOCHECKPOSITION);
-			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,10);}
+			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,7);}
 			goto super::death;
 		}
 	}
@@ -791,7 +800,8 @@ class BigBoyBlazerShotTail:HDActor{
 
 class BigBoyBlazerShot:MiniBBall{
 	default{
-		scale 0.8;
+		speed 22;
+		scale 0.7;
 		damage (12);
 	}
 	int user_counter;
@@ -808,21 +818,21 @@ class BigBoyBlazerShot:MiniBBall{
 		ADBS BAB 3 bright;
 	spawn2:
 		ADBS A 2 bright A_SeekerMissile(5,10);
-		ADBS B 2 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		ADBS B 2 bright A_SpawnItemEx("BigBoyBlazerShotTail",-3,0,3,3,0,random(1,2),0,161,0);
 		ADBS A 2 bright A_SeekerMissile(5,9);
-		ADBS B 2 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		ADBS B 2 bright A_SpawnItemEx("BigBoyBlazerShotTail",-3,0,3,3,0,random(1,2),0,161,0);
 		ADBS A 2 bright A_SeekerMissile(4,8);
-		ADBS B 2 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		ADBS B 2 bright A_SpawnItemEx("BigBoyBlazerShotTail",-3,0,3,3,0,random(1,2),0,161,0);
 		ADBS A 2 bright A_SeekerMissile(3,6);
-		ADBS B 2 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		ADBS B 2 bright A_SpawnItemEx("BigBoyBlazerShotTail",-3,0,3,3,0,random(1,2),0,161,0);
 	spawn3:
 		TNT1 A 0 A_JumpIf(user_counter>4,"spawn4");
 		TNT1 A 0 {user_counter++;}
 		ADBS A 3 bright A_SeekerMissile(1,1);
-		ADBS B 3 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		ADBS B 3 bright A_SpawnItemEx("BigBoyBlazerShotTail",-3,0,3,3,0,random(1,2),0,161,0);
 		loop;
 	spawn4:
-		ADBS A 3 bright A_SpawnItemEx("MiniBBallTail",-3,0,3,3,0,random(1,2),0,161,0);
+		ADBS A 3 bright A_SpawnItemEx("BigBoyBlazerShotTail",-3,0,3,3,0,random(1,2),0,161,0);
 		TNT1 A 0 A_JumpIf(pos.z-floorz<10,2);
 		ADBS B 3 bright A_ChangeVelocity(frandom(-0.2,1),frandom(-1,1),frandom(-1,0.9),CVF_RELATIVE);
 		loop;
