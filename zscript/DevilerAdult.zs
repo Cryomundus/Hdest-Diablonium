@@ -667,7 +667,7 @@ Class AdultDeviler : HDMobBase
 			goto see;
 		GonnaBiteYerHeadOffRound2:
 				AWRM A 0 A_SpawnItemEx("ATail1",-5,0,0,0,0,0,0,0,0);
-				AWRM A 1 A_LilDevilBabRandomForwardHop;
+				AWRM A 1 A_BigBoyDevilerRandomForwardHop;
 				AWRM AB 3 A_SetAngle(angle+random(-15,15));
 				AWRM AB 1 A_TryWimpyLatch();
 		postmelee:
