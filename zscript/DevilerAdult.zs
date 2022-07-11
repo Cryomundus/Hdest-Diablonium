@@ -230,14 +230,14 @@ Class AdultDeviler : HDMobBase
 		//$Category Worms;
 		Obituary "%o was incinerated by an Adult Deviler." ;
 		health 500;
-		hdmobbase.shields 350;
+		hdmobbase.shields 125;
 		radius 14;
 		height 40;
 		mass 250;
 		speed 10; //it's a adult parasite, it's realized it really can't move good, so it scoots. Despite that, its faster than its teen stage tho.
 		scale 0.8;
 		Meleerange 50;
-		painchance 150;
+		painchance 200;
 		species "DevilerWorm";
 		bloodcolor "brown";
 		attacksound "BWorm/Bite";
@@ -710,8 +710,7 @@ Class AdultDeviler : HDMobBase
 			TNT1 A 0 {bShootable=True;}
 			AWRM A 0 A_SpawnItemEx("ATail1",-5,0,0,0,0,0,0,0,0);
 			AWRM B 1;
-			TNT1 A 0 A_CheckFloor ("See");
-			loop;
+			TNT1 A 0 A_Jump(256, "ScootRandom", "ScootForward", "HopForward","ScootAway");
         Death:
 			//TNT1 A 0 ThrustThing(angle*256/360, 0, 0, 0);
 			TWBA ABCB 1;
