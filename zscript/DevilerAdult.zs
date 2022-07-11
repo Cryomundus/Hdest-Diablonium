@@ -761,7 +761,7 @@ class HDBigBoyFlamer : HDWimpyFireBall
 			damagetype "hot";
 			speed 24;
 			scale 0.5;
-			damage (4);
+			damage (2);
 			reactiontime 20;
 			gravity 0.15;
 		}
@@ -777,7 +777,7 @@ class HDBigBoyFlamer : HDWimpyFireBall
 			loop;
 	death:
 			TNT1 AAA 0 A_SpawnItemEx("HDSmoke",flags:SXF_NOCHECKPOSITION);
-			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,7);}
+			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,5);}
 			goto super::death;
 		}
 	}
@@ -802,7 +802,7 @@ class BigBoyBlazerShot:MiniBBall{
 	default{
 		speed 22;
 		scale 0.7;
-		damage (12);
+		damage (10);
 	}
 	int user_counter;
 	override void postbeginplay(){
