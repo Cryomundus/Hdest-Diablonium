@@ -662,7 +662,7 @@ Class TeenDeviler : HDMobBase
 			goto see;
 		GonnaBiteYerHeadOffRound2:
 				TWRM A 0 A_SpawnItemEx("TTail1",-5,0,0,0,0,0,0,0,0);
-				TWRM A 1 A_LilDevilBabRandomForwardHop;
+				TWRM A 1 A_TeenDevilDorkRandomForwardHop;
 				TWRM AB 3 A_SetAngle(angle+random(-15,15));
 				TWRM AB 1 A_TryWimpyLatch();
 		postmelee:
