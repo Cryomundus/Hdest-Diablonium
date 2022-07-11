@@ -1,105 +1,58 @@
-/*
-#include "zscript/MultimonsterGenerics.zs"
-class DevilerJuniorHandler : EventHandler
-{
-	override void CheckReplacement(ReplaceEvent e)
-	{
-			if (!e.Replacement)
-				{
-					return;
-				}
-
-			switch (e.Replacement.GetClassName())
-				{
-				case'BabuSpectreSpawner':
-				//'BabuSpectreSpawner':
-					if (random[BabDevrand]() <= 115)
-						{
-							if (random[ManyBabDevrand]() <= 70)
-							{
-							e.Replacement = 'BabyWorm';
-							e.Replacement = 'BabyWorm';
-							e.Replacement = 'BabyWorm';
-							break;
-							}
-							else
-							{
-							e.Replacement = 'BabyWorm';
-							break;
-							}
-						}
-					
-					e.Replacement = 'BabuSpectreSpawner';
-					break;
-				case'ImpSpawner':
-				//'BabuSpectreSpawner':
-					if (random[BabDevrand]() <= 80)
-						{
-							e.Replacement = 'BabyWorm';
-							e.Replacement = 'BabyWorm';
-							e.Replacement = 'BabyWorm';
-							break;
-						}
-					
-					e.Replacement = 'ImpSpawner';
-					break;
-				}
-			
-	}
-	
-}
-*/
 
 Class TeenDeviler : HDMobBase 
 {
-	vector3 lastpos;
-	vector3 latchpos;
-	double targangle;
 	actor latchtarget;
-	double latchforce;
+	double latchheight;  //as a proportion between 0 and 1
+	double latchangle;  //relative to the latchtarget's angle
+	double lastltangle;  //absolute, for comparison only
+	double latchmass;
+	
 		override void postbeginplay()
 		{
 			super.postbeginplay();
-			//resize(0.9,1.1);
+			resize(0.8,1.2);
 			A_GiveInventory("ImmunityToFire");
-			//let hdmb=HDMobBase(HDMobBase.spawnmobster(self));
-			//hdmb.meleethreshold=200;
 			lastpointinmap=pos;
-			bbiped=bplayingid;
-			resize(0.5,1.2);
-			latchtarget=null;
-			voicepitch=frandom(0.9,1.6);
+			lastpointinmap=pos;
+			latchmass=1.+mass*1./default.mass;
 	}    
 	void A_TryWimpyLatch()
-	{
-		if	(
+		{
+			if(blockingline&&CheckClimb())
+			{
+				setstatelabel("see");
+				return;
+			}	
+			
+		double checkrange=!!target?(target.radius*HDCONST_SQRTTWO)+meleerange:0;
+		if(
 			health<1
 			||!target
 			||target==self
-			||target.health<1
-			||distance2d(target)-target.radius-radius>12
-			)
-		{
+			||!target.height
+			||distance3dsquared(target)>checkrange*checkrange
+			||absangle(angleto(target),angle)>30
+			||!checkmove(0.5*(pos.xy+target.pos.xy),PCM_NOACTORS)
+		){
 			latchtarget=null;
 			return;
 		}else{
+			bnodropoff=false;
 			latchtarget=target;
-			latchpos.xy=
-				rotatevector(pos.xy-latchtarget.pos.xy,-latchtarget.angle).unit()
-				*(latchtarget.radius+radius)
-			;
-			latchpos.z=frandom(8,latchtarget.height-12);
-			targangle=latchtarget.angle;
-			latchforce=min(0.4,mass*0.02/max(1,latchtarget.mass));
-			lastpos=pos;
+
+			latchheight=(pos.z-latchtarget.pos.z)/latchtarget.height;
+			lastltangle=latchtarget.angle;
+			latchangle=deltaangle(lastltangle,latchtarget.angleto(self));
+
 			setstatelabel("latched");
 		}
 	}
-	
 	override bool cancollidewith(actor other,bool passive){
 		return(
-			other!=latchtarget
-			||(
+			(
+				other!=latchtarget
+				&&other!=target
+			)||(
 				!latchtarget
 				&&max(
 					abs(other.pos.x-pos.x),
@@ -114,82 +67,161 @@ Class TeenDeviler : HDMobBase
 	}
 	vector3 lastpointinmap;
 	override void Tick(){
+		if(isfrozen())return;
+
 		//brutal force
 		if(
 			health>0
 			&&(
 				!level.ispointinlevel(pos)
-				||!checkmove(pos.xy,PCM_DROPOFF|PCM_NOACTORS)
+				||!checkmove(pos.xy,PCM_NOACTORS)
 			)
 		){
 			setorigin(lastpointinmap,true);
 			setz(clamp(pos.z,floorz,ceilingz-height));
 		}else lastpointinmap=pos;
 
-		if(!latchtarget||latchtarget==self||latchtarget.health<1){
-			latchtarget=null;
-		}
+
 		if(latchtarget){
 			A_Face(latchtarget,0,0);
-			vector3 lp=latchtarget.pos;
-			targangle=(targangle+latchtarget.angle)*0.5;
-			lp.xy+=rotatevector(latchpos.xy,latchtarget.angle);
-			latchpos.z=clamp(latchpos.z+random(-2,2),12,max(floorz,latchtarget.height-height));
-			lp.z+=latchpos.z+frandom(-0.1,0.1);
 
-			//don't interpolate teleport
-			if(
+
+			vector3 lp=latchtarget.pos;
+			bool teleported=
 				abs(lp.x-pos.x)>100||
 				abs(lp.y-pos.y)>100||
 				abs(lp.z-pos.z)>100
-			){
-				setorigin(lp,false);
-			}else setorigin((lp+pos)*0.5,true);
+			;
+			
 
-			bool inmap=level.ispointinlevel(pos);
+			double oldz=pos.z;
+			setz(max(floorz,min(
+				latchtarget.pos.z+latchtarget.height*latchheight,
+				latchtarget.pos.z+latchtarget.height-height*0.6
+			)));
 
-			//can try to bump or shake it off
-			if(
-				inmap
-				&&(
-					absangle(latchtarget.angle,targangle)>frandom(6,180)
-					||floorz>pos.z
-					||ceilingz<pos.z+height
-					||(
-						!trymove(pos.xy,true)
-						&&blockingmobj!=latchtarget
-					)
+			vector2 newxy=latchtarget.pos.xy+
+				+angletovector(
+					latchtarget.angle+latchangle,
+					latchtarget.radius*frandom(0.9,1.)
 				)
+			;
+
+			//abort if blocked
+			if(
+				max(
+//					absangle(lastltangle,latchtarget.angle)*latchheight,
+					abs(newxy.x-pos.x),
+					abs(newxy.y-pos.y)
+				)>frandom(10,100)
+				||!checkmove(newxy,PCM_NOACTORS)
+				||!level.ispointinlevel((newxy,pos.z))
+				||!latchtarget
+				||latchtarget.health<random(-10,1)
 			){
-				A_Changevelocity(-6,random(-2,2),4,CVF_RELATIVE);
+				setz(oldz);
+				if(latchtarget.health>0){
+					A_Changevelocity(-5,frandom(-2,2),frandom(2,4),CVF_RELATIVE);
+					forcepain(self);
+				}else{
+					target=lastenemy;
+					setstatelabel("idle");
+				}
 				latchtarget=null;
-			}else{
-				//fun!
-				//latchtarget=bmj;
-				latchtarget.A_SetAngle(frandom(
-					latchtarget.angle,targangle)+random(-8,8),SPF_INTERPOLATE
+			}
+
+
+			if(latchtarget){
+				lastltangle=latchtarget.angle;
+
+				setorigin(
+					(newxy,pos.z)+(frandom(-1,1),frandom(-1,1),frandom(-1,1))
+					,!teleported
 				);
-				latchtarget.A_SetPitch(latchtarget.pitch+random(-6,10),SPF_INTERPOLATE);
-				latchtarget.vel+=(pos-lastpos)*latchforce;
-				hdf.give(latchtarget,"heat",random(6,12));
-				lastpos=pos;
-				//lift the victim as circumstances permit
-				if(
-					floorz>=pos.z
-					&&mass>latchtarget.mass  
-				){
-					latchtarget.addz(random(-1,2),true);
-				}
-			}
-			//nexttic
-			if(CheckNoDelay()){
-				if(tics>0)tics--;  
-				while(!tics){
-					if(!SetState(CurState.NextState)){
-						return;
+
+
+				if(!random(0,30))A_Vocalize(painsound);
+
+
+				double latchforce=max(latchheight,-latchheight*5)*latchmass;
+				let hdp=hdplayerpawn(latchtarget);
+
+
+				bool onground=
+					latchtarget.bonmobj
+					||latchtarget.floorz>=latchtarget.pos.z;
+				double latchjump=0.;
+
+				//fuck with the victim's pitch/angle and movement
+				if(latchtarget.health>0){
+					if(hdp){
+						vector2 vvv=(frandom(-5,5),frandom(-4,6));
+						hdp.muzzleclimb1+=vvv*latchforce;
+						hdp.muzzleclimb2+=vvv*latchforce;
+					}else if(
+						latchtarget.bismonster
+						||(
+							latchtarget.player
+							&&latchtarget.player.bot
+						)
+					){
+						latchtarget.pitch=clamp(
+							latchtarget.pitch+frandom(-8,8)*latchforce,-90,90
+						);
+						latchtarget.angle+=frandom(-8,8)*latchforce;
+
+						//make bots and monsters thrash to try to shake it off
+						latchtarget.angle+=frandom(-20,20);
 					}
+
+					if(onground){
+						if(latchtarget.pos.x<pos.x)latchtarget.vel.x+=0.1*latchforce;
+						else if(latchtarget.pos.x>pos.x)latchtarget.vel.x-=0.1*latchforce;
+						if(latchtarget.pos.y<pos.y)latchtarget.vel.y+=0.1*latchforce;
+						else if(latchtarget.pos.y>pos.y)latchtarget.vel.y-=0.1*latchforce;
+					}else if(latchtarget.bfloat)latchjump=-0.1*latchforce;
 				}
+
+				//inflict damage
+				if(!(level.time&1))switch(random(0,5)){
+				case 0:
+					latchjump=frandom(0,2)*latchforce;
+					double laa=(latchangle%90)*0.2;
+					if(hdp){
+						hdp.muzzleclimb1+=(latchforce*frandom(0,laa),frandom(0,latchforce*5));
+						hdp.muzzleclimb2+=(latchforce*frandom(0,laa),frandom(0,latchforce*5));
+						hdp.muzzleclimb3+=(latchforce*frandom(0,laa),frandom(0,latchforce*5));
+					}else{
+						latchtarget.angle+=latchforce*frandom(0,laa*3);
+						latchtarget.pitch=clamp(
+							latchtarget.pitch+frandom(0,latchforce*15),-90,90
+						);
+					}
+					latchtarget.damagemobj(
+						self,self,1+int(frandom(0,8)*latchforce),"jointlock"
+					);break;
+				case 1:
+					latchjump=frandom(1,3)*latchforce;
+					latchtarget.damagemobj(
+						self,self,int(frandom(0,10)*latchforce),"falling"
+					);break;
+				default:
+					setorigin(pos+(frandom(-1,1),frandom(-1,1),frandom(-1,1))*2,true);
+					latchtarget.damagemobj(
+						self,self,2+int(frandom(0,8*latchforce)),"teeth"
+					);break;
+				}
+
+				if(
+					onground
+					&&latchjump
+				)latchtarget.vel.z+=latchjump;
+
+				latchheight=clamp(latchheight+frandom(-0.01,0.014),-0.2,0.9);
 			}
+
+
+			NextTic();
 		}
 		else super.Tick();
 	}
@@ -201,7 +233,7 @@ Class TeenDeviler : HDMobBase
 		radius 20;
 		height 14;
 		mass 250;
-		speed 6; //it's a lil baby parasite, it hasn't figured out how to move good yet, so it scoots. Slightly faster than its junior stage tho.
+		speed 6; //it's a slightly older parasite, it hasn't figured out how to move good yet, so it scoots. Slightly faster than its junior stage tho.
 		scale 0.4;
 		Meleerange 50;
 		painchance 200;
@@ -217,11 +249,15 @@ Class TeenDeviler : HDMobBase
 		+NOINFIGHTING;
 		+cannotpush; 
 		+pushable;
+		+hdmobbase.chasealert
+		+hdmobbase.climber
+		+hdmobbase.climbpastdropoff
 		translation "208:223=19:31", "16:47=172:191", "160:167=174:191", "15:15=44:44", "238:238=189:189", "63:79=177:191";
 		damagefactor "Thermal",0.1; //devilers as a whole originated in a highly volcanic planet, they're functionally immune to heat.
 		damagefactor "hot",0; //similarly, takes no damage if on fire.
 		meleerange 126;
 		minmissilechance 32;
+		tag "Teen Deviler";
 	}
 	
 			void A_TeenDevilDorkDiggyDiggy()
@@ -500,7 +536,7 @@ Class TeenDeviler : HDMobBase
 			TNT1 A 0 A_PlaySound("Worm/Hurt");
 			TWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
 			TNT1 A 0 ThrustThing(angle*256/360, 4, 0, 0);
-			TNT1 A 0 A_TryWimpyLatch;
+			TNT1 A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
 		MidLeap:
 			TWRM A 0 A_SpawnItemEx("TTail1",-5,0,0,0,0,0,0,0,0);
 			TWRM B 1;//A_SpawnItem ("Fix");
@@ -516,7 +552,7 @@ Class TeenDeviler : HDMobBase
 			TNT1 A 0 A_PlaySound("Worm/Hurt");
 			TWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
 			TNT1 A 0 ThrustThing(angle*256/360, 16, 0, 0);
-			TWRM A 1 A_TryWimpyLatch;
+			TNT1 A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
 		GonnaSPITatYou:
 			TWRM A 0 A_jumpIfCloser(25,"Melee");
 			TNT1 A 0 A_Jump(75, "ScootAway");
@@ -606,7 +642,7 @@ Class TeenDeviler : HDMobBase
 			SKUL CD 1 A_TryWimpyLatch();
 			loop;
     	Melee:
-			TNT1 A 0 A_Jump(256,"StandardMelee","NOPERUN","Lunge");
+			TNT1 A 0 A_Jump(256,"StandardMelee","GonnaBiteYerHeadOffRound2","NOPERUN","Lunge");
 			Goto See;
     	StandardMelee:
 			TWRM B 5 A_FaceTarget;
@@ -622,8 +658,37 @@ Class TeenDeviler : HDMobBase
 			TWRM A 0 A_SpawnItemEx("TTail1",-5,0,0,0,0,0,0,0,0);
 			TWRM A 0 A_SpawnItemEx("TTail1",-5,0,0,0,0,0,0,0,0);
 			TWRM B 1 A_TeenDevilDorkRandomRunawayNoPainScoot;
-			TNT1 A 0 A_Jump(45,"GonnaSPITatYou");
+			TNT1 A 0 A_Jump(65,"GonnaSPITatYou","GonnaSPITatYou","GonnaBiteYerHeadOffRound2");
 			goto see;
+		GonnaBiteYerHeadOffRound2:
+				TWRM A 0 A_SpawnItemEx("TTail1",-5,0,0,0,0,0,0,0,0);
+				TWRM A 1 A_LilDevilBabRandomForwardHop;
+				TWRM AB 3 A_SetAngle(angle+random(-15,15));
+				TWRM AB 1 A_TryWimpyLatch();
+		postmelee:
+				TWRM B 6 A_CustomMeleeAttack(random(1,8),"","","teeth",true);
+				TWRM A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,10);} //BURRRRN
+				TWRM A 0 setstatelabel("see");
+		latched:
+				TWRM AB random(1,2);
+				TWRM A 0 A_JumpIf(!latchtarget,"pain");
+				loop;
+		fly:
+				TWRM AB 1
+					{
+					A_TryWimpyLatch();
+						if
+							(bonmobj||floorz>=pos.z||vel.xy==(0,0))setstatelabel("land");
+						else if
+							(max(abs(vel.x),abs(vel.y)<3))vel.xy+=(cos(angle),sin(angle))*0.1;
+					}
+					wait;
+		land:
+				TWRM ABC 3{vel.xy*=0.8;}
+				TWRM C 4{vel.xy=(0,0);}
+				TWRM ABC 3 A_HDChase("melee",null);
+				TWRM A 0 setstatelabel("see");
+				
     	Pain:
 			TNT1 A 0 {bShootable=True;}
 			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,30);} //yes punch the VISIBLY BURNING WORM
