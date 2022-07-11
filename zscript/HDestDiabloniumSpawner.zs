@@ -57,6 +57,16 @@ class HDestDiabloniumSpawner : EventHandler
 					
 					e.Replacement = 'ImpSpawner';
 					break;
+		case'PainBringer':
+				//'BabuSpectreSpawner':
+					if (random[monchancerand]() <= 80)
+						{
+							e.Replacement = 'AdultDeviler';
+							break;
+						}
+					
+					e.Replacement = 'PainBringer';
+					break;
 		}
 	}
 }
