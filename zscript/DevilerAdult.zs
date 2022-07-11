@@ -755,7 +755,7 @@ class HDBigBoyFlamer : HDWimpyFireBall
 			damage (8);
 			reactiontime 3;
 			gravity 0.15;
-			translation "168:181=224:231", "182:191=160:165"
+			translation "168:181=224:231", "182:191=160:165";
 		}
 	states
 			{
