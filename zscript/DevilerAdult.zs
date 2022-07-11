@@ -771,7 +771,6 @@ class HDBigBoyFlamer : HDWimpyFireBall
 			TNT1 AAA 0 A_SpawnItemEx("HDSmoke",flags:SXF_NOCHECKPOSITION);
 			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,10);}
 			goto super::death;
-			}
 		}
 	}
 
