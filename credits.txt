@@ -30,4 +30,12 @@ Sprite Edits: Doomedarchviledemon
 Sounds: Serious Sam, Freesounds
 Idea Base: Tremors
 
+//hectebus projectiles
+Code: AgentSpork, Carnevil, Ghastly
+GLDefs: Ghastly Dragon, Sandypaper (Brightmaps)
+Sounds: Blizzard Entertainment, Vader, Id Software
+Sprites: Id Software, Midway
+Sprite Edit: AgentSpork
+
+
 Latching code taken from babuin.zs from hideousdestructor by Matt, also known as mc776
