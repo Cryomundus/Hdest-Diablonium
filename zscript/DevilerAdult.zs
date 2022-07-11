@@ -260,7 +260,7 @@ Class AdultDeviler : HDMobBase
 		+hdmobbase.chasealert
 		+hdmobbase.climber
 		+hdmobbase.climbpastdropoff
-		amagefactor "balefire",0.3;
+		damagefactor "balefire",0.3;
 		damagefactor "cold",1.4; //originating from a volcanic planet, they have a bit of a weakness to cold.
 		damagefactor "Thermal",0.1; //devilers as a whole originated in a highly volcanic planet, they're functionally immune to heat.
 		damagefactor "hot",0; //similarly, takes no damage if on fire.
