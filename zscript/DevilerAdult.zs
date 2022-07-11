@@ -257,7 +257,7 @@ Class AdultDeviler : HDMobBase
 		damagefactor "hot",0; //similarly, takes no damage if on fire.
 		meleerange 126;
 		minmissilechance 32;
-		translation "13:15=212:216", "0:3=165:167", "155:155=181:181", "80:111=171:191", "5:12=167:167", "236:239=216:223", "128:151=48:63", "64:79=208:223"
+		translation "13:15=212:216", "0:3=165:167", "155:155=181:181", "80:111=171:191", "5:12=167:167", "236:239=216:223", "128:151=48:63", "64:79=208:223";
 		tag "Adult Deviler";
 	}
 	
@@ -743,8 +743,10 @@ Class AdultDeviler : HDMobBase
 }
 
 
-class HDBigBoyFlamer : HDWimpyFireBall{ //babby flamethrower
-	default{
+class HDBigBoyFlamer : HDWimpyFireBall
+	{ 
+	default
+		{
 	
 			missiletype "HDWimpyFireBallTail";
 			damagetype "hot";
@@ -754,8 +756,9 @@ class HDBigBoyFlamer : HDWimpyFireBall{ //babby flamethrower
 			reactiontime 3;
 			gravity 0.15;
 			translation "168:181=224:231", "182:191=160:165"
-	}
-	states{
+		}
+	states
+			{
 	spawn:
 			
 			MANF ABABABAB 1 A_FBTail();
@@ -768,9 +771,9 @@ class HDBigBoyFlamer : HDWimpyFireBall{ //babby flamethrower
 			TNT1 AAA 0 A_SpawnItemEx("HDSmoke",flags:SXF_NOCHECKPOSITION);
 			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,10);}
 			goto super::death;
+			}
+		}
 	}
-}
-
 
 Class ATail1 : Actor
 {
