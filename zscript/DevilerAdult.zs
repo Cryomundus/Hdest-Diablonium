@@ -791,7 +791,7 @@ class BigBoyBlazerShotTail:HDActor{
 
 class BigBoyBlazerShot:MiniBBall{
 	default{
-		scale 0.8
+		scale 0.8;
 		damage (12);
 	}
 	int user_counter;
