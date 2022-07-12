@@ -239,7 +239,7 @@ Class AdultDeviler : HDMobBase
 		hdmobbase.shields 200;
 		radius 14;
 		height 40;
-		mass 250;
+		mass 1000;
 		speed 10; //it's a adult parasite, it's realized it really can't move good, so it scoots. Despite that, its faster than its teen stage tho.
 		scale 0.8;
 		Meleerange 50;
