@@ -236,10 +236,10 @@ Class AdultDeviler : HDMobBase
 		//$Category Worms;
 		Obituary "%o was incinerated by an Adult Deviler." ;
 		health 400;
-		hdmobbase.shields 200;
+		hdmobbase.shields 150;
 		radius 14;
 		height 40;
-		mass 1000;
+		mass 1250;
 		speed 10; //it's a adult parasite, it's realized it really can't move good, so it scoots. Despite that, its faster than its teen stage tho.
 		scale 0.8;
 		Meleerange 50;
@@ -558,15 +558,15 @@ Class AdultDeviler : HDMobBase
 			Goto See;
 	NormalJump:
 			AWRM A 0 A_jumpIfCloser(60,"Melee");
-    		AWRM A 1 A_FaceTarget;
-			TNT1 A 0 A_PlaySound("Worm/Hurt");
+    			AWRM A 1 A_FaceTarget;
+			AWRM A 0 A_PlaySound("Worm/Hurt");
 			AWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
-			TNT1 A 0 ThrustThing(angle*256/360, 4, 0, 0);
-			TNT1 A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
+			AWRM A 0 ThrustThing(angle*256/360, 4, 0, 0);
+			AWRM A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
 		MidLeap:
 			AWRM A 0 A_SpawnItemEx("ATail1",-5,0,0,0,0,0,0,0,0);
 			AWRM B 1;//A_SpawnItem ("Fix");
-			TNT1 A 0 A_CheckFloor ("Land");
+			AWRM A 0 A_CheckFloor ("Land");
 			loop;
 		Land:
 			AWRM A 0 A_SpawnItemEx("ATail1",-5,0,0,0,0,0,0,0,0);
@@ -574,14 +574,14 @@ Class AdultDeviler : HDMobBase
 			goto See;
 		Lunge:
 			AWRM A 0 A_jumpIfCloser(60,"Melee");
-    		AWRM A 1 A_FaceTarget;
-			TNT1 A 0 A_PlaySound("Worm/Hurt");
+    			AWRM A 1 A_FaceTarget;
+			AWRM A 0 A_PlaySound("Worm/Hurt");
 			AWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
-			TNT1 A 0 ThrustThing(angle*256/360, 16, 0, 0);
-			TNT1 A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
+			AWRM A 0 ThrustThing(angle*256/360, 16, 0, 0);
+			AWRM A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
 		GonnaSPITatYou:
 			AWRM A 0 A_jumpIfCloser(25,"Melee");
-			TNT1 A 0 A_Jump(75, "ScootAway","ScootAway","GonnaSPITTHEBOIatYou");
+			AWRM  A 0 A_Jump(75, "ScootAway","ScootAway","GonnaSPITTHEBOIatYou");
 			AWRM A 1 A_FaceTarget; 
 			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
 			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
@@ -607,7 +607,7 @@ Class AdultDeviler : HDMobBase
 			goto see;
 		GonnaSPITTHEBOIatYou:
 			AWRM A 0 A_jumpIfCloser(25,"Melee");
-			TNT1 A 0 A_Jump(75, "ScootAway");
+			AWRM A 0 A_Jump(75, "ScootAway");
 			AWRM A 1 A_FaceTarget; 
 			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
 			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
@@ -633,10 +633,10 @@ Class AdultDeviler : HDMobBase
 			goto see;
 		SteamingHotPrep:
 			AWRM A 0 A_jumpIfCloser(25,"Melee");
-			TNT1 A 0 A_Jump(75, "ScootAway");
+			AWRM A 0 A_Jump(75, "ScootAway");
 			AWRM A 1 A_FaceTarget; 
 			AWRM A 0 A_jumpIfCloser(25,"Melee");
-			TNT1 A 0 A_Jump(75, "ScootAway");
+			AWRM A 0 A_Jump(75, "ScootAway");
 			AWRM A 1 A_FaceTarget; 
 			AWRM A 1 bright A_BigBoyDevilerisSteamingHOTLeft();
 			AWRM A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
@@ -683,7 +683,7 @@ Class AdultDeviler : HDMobBase
 		MidLeap:
 			AWRM A 0 A_SpawnItemEx("ATail1",-17,0,0,0,0,0,0,0,0);
 			AWRM B 1;//A_SpawnItem ("Fix");
-			TNT1 A 0 A_CheckFloor ("Land");
+			AWRM A 0 A_CheckFloor ("Land");
 			loop;
 		Land:
 			AWRM A 0 A_SpawnItemEx("ATail1",-5,0,0,0,0,0,0,0,0);
@@ -691,16 +691,16 @@ Class AdultDeviler : HDMobBase
 			AWRM A 1 A_BigBoyDevilerRandomRunawayNoPainScoot;
 			goto See;
 		latched:
-			SKUL CD 1 A_TryWimpyLatch();
+			AWRM CD 1 A_TryWimpyLatch();
 			loop;
     	Melee:
 			TNT1 A 0 A_Jump(256,"StandardMelee","GonnaBiteYerHeadOffRound2","NOPERUN","Lunge");
 			Goto See;
     	StandardMelee:
 			AWRM B 5 A_FaceTarget;
-    		AWRM A 1 A_BigBoyDevilerChomp();
+    			AWRM A 1 A_BigBoyDevilerChomp();
 			AWRM A 10 A_BigBoyDevilerRandomRunawayScoot;
-    		Goto See;
+    			Goto See;
 		NOPERUN:
 			AWRM A 0 A_SpawnItemEx("ATail1",-5,0,0,0,0,0,0,0,0);
 			AWRM A 0 A_SpawnItemEx("ATail1",-5,0,0,0,0,0,0,0,0);
