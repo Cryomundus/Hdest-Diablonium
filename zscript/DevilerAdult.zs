@@ -823,7 +823,7 @@ class HDBigBoyEggSpit : HDWimpyFireBall
 			A_XScream();
 			A_NoBlocking();
 			}
-			TNT1 AAA 0 A_SpawnItemEx("BabyDeviler",flags:SXF_NOCHECKPOSITION);
+			TNT1 A 0 A_SpawnItemEx("BabyDeviler",flags:SXF_NOCHECKPOSITION);
 			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,5);}
 			goto super::death;
 		}
