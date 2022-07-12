@@ -16,31 +16,7 @@ pieces, than the energy anchored within will be let loose.
 Probably gonna have two variants, one anchored to a heart column, and another 
 that'll spawn alongside lost souls.
 
-
-
-class WretchedHandler : EventHandler
-{
-	override void CheckReplacement(ReplaceEvent e)
-	{
-		if (!e.Replacement)
-		{
-			return;
-		}
-
-		switch (e.Replacement.GetClassName())
-		{
-			case 'FlyingSkull':
-				if (random[wretchrand]() <= 115)
-				{
-					e.Replacement = 'Wretched';
-				}
-				e.Replacement = 'FlyingSkull';
-		}
-	}
-}
-*/
-
-Class WretchedGhoul : HDMobBase  //replaces LostSoul
+Class WretchedGhoul : HDMobBase  
 {
 	Default 
 	{
