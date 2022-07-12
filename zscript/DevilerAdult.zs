@@ -1,3 +1,5 @@
+"0:17=@24[255,0,0]"
+
 
 Class AdultDeviler : HDMobBase 
 {
@@ -421,6 +423,18 @@ Class AdultDeviler : HDMobBase
 				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
 				//ThrustThing(angle*256/360, random(1,3), 1, 0);
 			}
+			void A_BigBoyDevilerSpitOutTHEBOI()
+			{
+				A_HDChase();
+				A_facetarget();
+				//A_SetAngle(angle+random(-15,15));
+				ThrustThingZ (0, 12, 0, 0);
+				A_SpawnProjectile("HDBigBoyEggSpit",38,0,2,0,0);
+				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
+				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
+				spawn("HDFlameRed",pos+(frandom(-4,4),frandom(-4,4),frandom(2,8)),ALLOW_REPLACE);
+				//ThrustThing(angle*256/360, random(1,3), 1, 0);
+			}
 			void A_BigBoyDevilerTheHorribleFireVomit()
 			{
 				A_HDChase();
@@ -570,7 +584,7 @@ Class AdultDeviler : HDMobBase
 			TNT1 A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
 		GonnaSPITatYou:
 			AWRM A 0 A_jumpIfCloser(25,"Melee");
-			TNT1 A 0 A_Jump(75, "ScootAway");
+			TNT1 A 0 A_Jump(75, "ScootAway","ScootAway","GonnaSPITTHEBOIatYou");
 			AWRM A 1 A_FaceTarget; 
 			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
 			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
@@ -593,6 +607,33 @@ Class AdultDeviler : HDMobBase
 			AWRM A 2 bright A_BigBoyDevilerRandomRunawayNoPainScoot();
 			AWRM A 1 bright ThrustThingZ (0, 20, 0, 0);
 			AWRM A 0 bright A_BigBoyDevilerThePrettyGoodSpit();
+			goto see;
+		GonnaSPITTHEBOIatYou:
+			A_JumpIfTargetInLOS
+			AWRM A 0 A_jumpIfCloser(25,"Melee");
+			TNT1 A 0 A_Jump(75, "ScootAway");
+			AWRM A 1 A_FaceTarget; 
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTRight();
+			AWRM A 2 bright A_BigBoyDevilerisSteamingHOTLeft();
+			AWRM A 1 bright A_ChangeVelocity(0,0,0,CVF_REPLACE);
+			AWRM A 2 bright A_BigBoyDevilerRandomRunawayNoPainScoot();
+			AWRM A 1 bright ThrustThingZ (0, 20, 0, 0);
+			AWRM A 0 bright A_BigBoyDevilerSpitOutTHEBOI();
 			goto see;
 		SteamingHotPrep:
 			AWRM A 0 A_jumpIfCloser(25,"Melee");
@@ -751,6 +792,41 @@ Class AdultDeviler : HDMobBase
 	}
 }
 
+class HDBigBoyEggSpit : SlowProjectile
+{
+	default
+		{
+			damagetype "hot";
+			radius 10;
+			height 10;
+			speed 32;
+			scale 0.3;
+			damage (1);
+			reactiontime 20;
+			gravity 0.15;
+		}
+	states
+			{
+	spawn:
+			
+			EGGG ABABABAB 1 A_FBTail();
+			goto spawn2;
+	spawn2:
+			EGGG A 0 A_countdown;
+			EGGG AB 3 A_HDIBFly();
+			loop;
+	death:
+			TNT1 AAA 0 A_SpawnItemEx("HDSmoke",flags:SXF_NOCHECKPOSITION);
+			TNT1 A 1{
+			A_SpawnItemEx("HDExplosion",0,0,3,
+				vel.x,vel.y,vel.z+1,0,
+				SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM
+			);
+			TNT1 AAA 0 A_SpawnItemEx("BabyDeviler",flags:SXF_NOCHECKPOSITION);
+			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,5);}
+			goto super::death;
+		}
+	}
 
 class HDBigBoyFlamer : HDWimpyFireBall
 	{ 
