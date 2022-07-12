@@ -17,6 +17,7 @@ Probably gonna have two variants, one anchored to a heart column, and another
 that'll spawn alongside lost souls.
 
 Class WretchedGhoul : HDMobBase  
+*/
 {
 	Default 
 	{
