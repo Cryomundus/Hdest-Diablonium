@@ -875,11 +875,25 @@ class BigBoyBlazerShotTail:HDActor{
 	}
 }
 
-class BigBoyBlazerShot:MiniBBall{
+class BigBoyBlazerShot:HDActor{
 	default{
-		speed 22;
+		+forcexybillboard
+		projectile;
+		+seekermissile
+		damagetype "hot";
+		renderstyle "add";
+		decal "gooscorch";
+		alpha 0.8;
+		scale 0.6;
+		radius 4;
+		height 6;
+		speed 16;
+		damage 6;
+		seesound "baron/attack";
+		speed 28;
 		scale 0.7;
-		damage (8);
+		damage (10);
+		seesound "baron/attack";
 		deathsound "imp/shotx";
 	}
 	int user_counter;
@@ -917,6 +931,7 @@ class BigBoyBlazerShot:MiniBBall{
 		ADBS B 3 bright A_ChangeVelocity(frandom(-0.2,1),frandom(-1,1),frandom(-0.6,1.9),CVF_RELATIVE);
 		loop;
 	death:
+		TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,3);}
 		ADBS CDE 4 bright A_FadeOut(0.2);
 		stop;
 	}
