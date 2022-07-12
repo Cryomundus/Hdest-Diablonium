@@ -788,7 +788,7 @@ Class AdultDeviler : HDMobBase
 	}
 }
 
-class HDBigBoyEggSpit : SlowProjectile
+class HDBigBoyEggSpit : HDWimpyFireBall
 {
 	default
 		{
