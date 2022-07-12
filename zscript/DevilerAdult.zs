@@ -606,7 +606,6 @@ Class AdultDeviler : HDMobBase
 			AWRM A 0 bright A_BigBoyDevilerThePrettyGoodSpit();
 			goto see;
 		GonnaSPITTHEBOIatYou:
-			A_JumpIfTargetInLOS
 			AWRM A 0 A_jumpIfCloser(25,"Melee");
 			TNT1 A 0 A_Jump(75, "ScootAway");
 			AWRM A 1 A_FaceTarget; 
@@ -801,10 +800,10 @@ class HDBigBoyEggSpit : SlowProjectile
 			damage (1);
 			reactiontime 20;
 			gravity 0.15;
-			translation: "0:17=@24[255,0,0]";
+			translation "0:17=@24[255,0,0]";
 		}
 	states
-			{
+		{
 	spawn:
 			
 			EGGG ABABABAB 1 A_FBTail();
@@ -820,6 +819,10 @@ class HDBigBoyEggSpit : SlowProjectile
 				vel.x,vel.y,vel.z+1,0,
 				SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM
 			);
+			spawn("MegaBloodSplatter",pos+(0,0,34),ALLOW_REPLACE);
+			A_XScream();
+			A_NoBlocking();
+			}
 			TNT1 AAA 0 A_SpawnItemEx("BabyDeviler",flags:SXF_NOCHECKPOSITION);
 			TNT1 A 0 {if(blockingmobj)A_Immolate(blockingmobj,target,5);}
 			goto super::death;
