@@ -1,6 +1,3 @@
-"0:17=@24[255,0,0]"
-
-
 Class AdultDeviler : HDMobBase 
 {
 	actor latchtarget;
@@ -804,6 +801,7 @@ class HDBigBoyEggSpit : SlowProjectile
 			damage (1);
 			reactiontime 20;
 			gravity 0.15;
+			translation: "0:17=@24[255,0,0]";
 		}
 	states
 			{
