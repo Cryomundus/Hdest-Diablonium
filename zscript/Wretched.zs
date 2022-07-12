@@ -15,9 +15,8 @@ pieces, than the energy anchored within will be let loose.
 
 Probably gonna have two variants, one anchored to a heart column, and another 
 that'll spawn alongside lost souls.
-
-Class WretchedGhoul : HDMobBase  
 */
+Class WretchedGhoul : HDMobBase  
 {
 	Default 
 	{
