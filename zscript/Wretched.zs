@@ -628,7 +628,7 @@ Class GhostBlood : HDActor
 {
 	Default
 	{
-	Mass 5;
+	Mass 100;
 	+NOBLOCKMAP;
 	+NOTELEPORT;
 	Health 30;
@@ -646,7 +646,7 @@ Class GhostGib1 : HDActor
 {
 	Default
 	{
-		Mass 5;
+		Mass 100;
 		Health 1;
 	}
 	States
@@ -662,7 +662,7 @@ Class GhostGib2 : HDActor
 {
 	Default
 	{
-		Mass 5;
+		Mass 100;
 		Health 1;
 	}
 	States
@@ -678,7 +678,7 @@ Class GhostGib3 : HDActor
 {
 	Default
 	{
-		Mass 5;
+		Mass 100;
 		Health 1;
 	}
 	States
@@ -694,7 +694,7 @@ Class GhostGib4 : HDActor
 {
 	Default
 	{
-		Mass 5;
+		Mass 100;
 		Health 1;
 	}
 	States
@@ -710,7 +710,7 @@ Class GhostGib5 : HDActor
 {	
 	Default
 	{
-		Mass 5;
+		Mass 100;
 		Health 1;
 	}
 	States
@@ -727,7 +727,7 @@ Class GhostGib6 : HDActor
 {	
 	Default
 	{
-		Mass 5;
+		Mass 100;
 		Health 1;
 		+RANDOMIZE;
 	}
