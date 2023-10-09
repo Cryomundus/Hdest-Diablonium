@@ -228,7 +228,7 @@ Class TeenDeviler : HDMobBase
 	default
 	{
 		//$Category Worms;
-		Obituary "%o was roasted by a Teen Deviler." ;
+		Obituary "$OB_TEENDEVILER" ;
 		health 90;
 		radius 20;
 		height 14;
@@ -257,7 +257,7 @@ Class TeenDeviler : HDMobBase
 		damagefactor "hot",0; //similarly, takes no damage if on fire.
 		meleerange 126;
 		minmissilechance 32;
-		tag "Teen Deviler";
+		tag "$TAG_TEENDEVILER";
 	}
 	
 			void A_TeenDevilDorkDiggyDiggy()

@@ -1,0 +1,66 @@
+[enu default]
+
+// Option Menu Titles
+DIABLONIUM_MENU = "\c[Red]Ⓓ\c- Diablonium";
+MENU_ENEMIES_TITLE = "--- Enemies ---";
+MENU_RESETOPTIONS_TITLE = "--- Reset Options ---";
+
+// Menu Section Headers
+MENU_SPAWNOPTIONS                       = "Spawn Options";
+MENU_ENEMYSPAWNOPTIONS                  = "Enemy Spawn Options";
+MENU_PERSISTENCYOPTIONS                 = "Spawn Persistence Options";
+MENU_RESETOPTIONS                       = "Reset Options";
+MENU_RESETALLOPTIONS                    = "Reset all Options";
+
+// Menu Static Text
+MENU_SPAWNRATE_TEXT1                    = "Setting 'spawn rate' to Replace All will suppress";
+MENU_SPAWNRATE_TEXT2                    = "spawns of that given type.";
+MENU_PERSISTENCY_TEXT                   = "Control whether replacements happen after a mapload:";
+
+// Menu Option Labels
+MENU_NOTICE                             = "Notice:";
+MENU_SPAWNRATE                          = "Spawn Rate: ";
+MENU_ENEMYSPAWNRATE                     = "Enemy Spawn Rate: ";
+MENU_PERSISTENCY                        = "Persistent Spawns: ";
+MENU_ENEMYPERSISTENCY                   = "Persistent Enemy Spawns: ";
+
+// Menu Command Text
+MENU_RESETENEMY                         = "Reset Enemy Options";
+MENU_RESETPERSISTENCY                   = "Reset Persistence Options";
+DIABLONIUM_RESETALLOPTIONS              = "Reset all options for Diablonium";
+
+// Baby Deviler Menu
+MENU_BABYDEVILER_TITLE = "------ Baby Deviler Options ------";
+MENU_BABYDEVILER_BABUIN_SPAWNTEXT = "Control the spawn rate of Baby Devilers on Babuins:";
+MENU_BABYDEVILER_SPECTRE_SPAWNTEXT = "Control the spawn rate of Baby Devilers on Spectres:";
+
+// Teen Deviler Menu
+MENU_TEENDEVILER_TITLE = "------ Teen Deviler Options ------";
+MENU_TEENDEVILER_IMP_SPAWNTEXT = "Control the spawn rate of Teen Devilers on Imps:";
+
+// Adult Deviler
+MENU_ADULTDEVILER_TITLE = "------ Adult Deviler Options ------";
+MENU_ADULTDEVILER_HELLKNIGHT_SPAWNTEXT = "Control the spawn rate of Adult Devilers on Hell Knights:";
+
+// Wretched Ghoul
+MENU_WRETCHEDGHOUL_TITLE = "------ Wretched Ghoul Options ------";
+MENU_WRETCHEDGHOUL_LOSTSOUL_SPAWNTEXT = "Control the spawn rate of Wretched Ghouls on Lost Souls:";
+MENU_WRETCHEDGHOUL_BABUIN_SPAWNTEXT = "Control the spawn rate of Wretched Ghouls on Babuins:";
+MENU_WRETCHEDGHOUL_SPECTRE_SPAWNTEXT = "Control the spawn rate of Wretched Ghouls on Spectres:";
+
+
+//------------
+// Enemy Lumps
+//------------
+
+TAG_ADULTDEVILER = "Adult Deviler";
+OB_ADULTDEVILER = "%o was incinerated by an Adult Deviler.";
+
+TAG_TEENDEVILER = "Teen Deviler";
+OB_TEENDEVILER = "%o was roasted by a Teen Deviler.";
+
+TAG_BABYDEVILER = "Baby Deviler";
+OB_BABYDEVILER = "%o was broiled by a Junior Deviler.";
+
+TAG_WRETCHEDGHOUL = "Wretched Ghoul";
+OB_WRETCHEDGHOUL = "%o was ripped apart by a Wretched.";

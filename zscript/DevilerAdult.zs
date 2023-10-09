@@ -234,7 +234,7 @@ Class AdultDeviler : HDMobBase
 	default
 	{
 		//$Category Worms;
-		Obituary "%o was incinerated by an Adult Deviler." ;
+		Obituary "$OB_ADULTDEVILER" ;
 		health 400;
 		hdmobbase.shields 150;
 		radius 14;
@@ -266,7 +266,7 @@ Class AdultDeviler : HDMobBase
 		meleerange 126;
 		minmissilechance 32;
 		translation "13:15=212:216", "0:3=165:167", "155:155=181:181", "80:111=171:191", "5:12=167:167", "236:239=216:223", "128:151=48:63", "64:79=208:223";
-		tag "Adult Deviler";
+		tag "$TAG_ADULTDEVILER";
 	}
 	
 			void A_BigBoyDevilerDiggyDiggy()

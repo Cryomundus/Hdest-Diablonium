@@ -52,7 +52,8 @@ Class WretchedGhoul : HDMobBase
 		PainSound "wpain";
 		DeathSound "wdeath";
 		ActiveSound "widle";
-		Obituary "%o was ripped apart by a Wretched." ;
+		Obituary "$OB_WRETCHEDGHOUL";
+		Tag "$TAG_WRETCHEDGHOUL";
 		meleerange 126;
 		minmissilechance 32;
 		

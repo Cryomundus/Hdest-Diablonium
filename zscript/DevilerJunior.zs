@@ -234,7 +234,7 @@ Class BabyDeviler : HDMobBase
 		+pushable
 		+hdmobbase.climber
 		+hdmobbase.climbpastdropoff
-		Obituary "%o was broiled by a Junior Deviler." ;
+		Obituary "$OB_BABYDEVILER" ;
 		health 45;
 		radius 16;
 		height 12;
@@ -259,7 +259,7 @@ Class BabyDeviler : HDMobBase
 		translation "208:223=19:31", "16:47=172:191", "160:167=174:191", "15:15=44:44", "238:238=189:189", "63:79=177:191";
 		damagefactor "Thermal",0; //devilers as a whole originated in a highly volcanic planet, they're literally immune to heat.
 		damagefactor "hot",0; //similarly, takes no damage if on fire.
-		tag "Baby Deviler";
+		tag "$TAG_BABYDEVILER";
 	}
 	
 			void A_LilDevilBabBite()
