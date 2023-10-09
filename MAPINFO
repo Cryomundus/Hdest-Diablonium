@@ -1,7 +1,6 @@
 GameInfo
 {
-	AddEventHandlers = "HDestDiabloniumSpawner"
-	//AddEventHandlers = "DevilerJuniorHandler"
+	AddEventHandlers = "HDDiabloniumEnemyHandler"
 }
 
 include "Diabdoomednums.txt"

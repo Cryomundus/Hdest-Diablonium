@@ -1,0 +1,4 @@
+// Baby Deviler
+server int babydeviler_babuin_spawn_bias = 19;
+server int babydeviler_spectre_spawn_bias = 19;
+server bool babydeviler_persistent_spawning = false;
