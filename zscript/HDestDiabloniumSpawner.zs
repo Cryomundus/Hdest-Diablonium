@@ -156,11 +156,30 @@ class HDDiabloniumEnemyHandler : EventHandler {
 		// Enemies
 		//------------
 
-		// Baby Devilver
+		// Baby Deviler
 		Array<HDDiabloniumSpawnItemEntry> spawns_babydeviler;
 		spawns_babydeviler.push(addItemEntry('SpecBabuin', babydeviler_babuin_spawn_bias));
 		spawns_babydeviler.push(addItemEntry('Babuin', babydeviler_spectre_spawn_bias));
 		addItem('BabyDeviler', spawns_babydeviler, babydeviler_persistent_spawning);
+
+		// Teen Deviler
+		Array<HDDiabloniumSpawnItemEntry> spawns_teendeviler;
+		spawns_teendeviler.push(addItemEntry('Serpentipede', teendeviler_imp_spawn_bias));
+		spawns_teendeviler.push(addItemEntry('Regentipede', teendeviler_imp_spawn_bias));
+		spawns_teendeviler.push(addItemEntry('Ardentipede', teendeviler_imp_spawn_bias));
+		addItem('TeenDeviler', spawns_teendeviler, teendeviler_persistent_spawning);
+
+		// Adult Deviler
+		Array<HDDiabloniumSpawnItemEntry> spawns_adultdeviler;
+		spawns_adultdeviler.push(addItemEntry('PainBringer', adultdeviler_hellknight_spawn_bias));
+		addItem('TeenDeviler', spawns_adultdeviler, adultdeviler_persistent_spawning);
+
+		// Wretched Ghoul
+		Array<HDDiabloniumSpawnItemEntry> spawns_wretchedghoul;
+		spawns_wretchedghoul.push(addItemEntry('FlyingSkull', wretchedghoul_lostsoul_spawn_bias));
+		spawns_wretchedghoul.push(addItemEntry('Babuin', wretchedghoul_babuin_spawn_bias));
+		spawns_wretchedghoul.push(addItemEntry('SpecBabuin', wretchedghoul_spectre_spawn_bias));
+		addItem('WretchedGhoul', spawns_wretchedghoul, wretchedghoul_persistent_spawning);
 	}
 
 	// Random stuff, stores it and forces negative values just to be 0.
