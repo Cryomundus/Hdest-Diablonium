@@ -533,7 +533,7 @@ Class TeenDeviler : HDMobBase
 	NormalJump:
 			TWRM A 0 A_jumpIfCloser(60,"Melee");
     		TWRM A 1 A_FaceTarget;
-			TNT1 A 0 A_PlaySound("Worm/Hurt");
+			TNT1 A 0 A_StartSound("Worm/Hurt");
 			TWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
 			TNT1 A 0 ThrustThing(angle*256/360, 4, 0, 0);
 			TNT1 A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
@@ -549,7 +549,7 @@ Class TeenDeviler : HDMobBase
 		Lunge:
 			TWRM A 0 A_jumpIfCloser(60,"Melee");
     		TWRM A 1 A_FaceTarget;
-			TNT1 A 0 A_PlaySound("Worm/Hurt");
+			TNT1 A 0 A_StartSound("Worm/Hurt");
 			TWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
 			TNT1 A 0 ThrustThing(angle*256/360, 16, 0, 0);
 			TNT1 A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
@@ -710,7 +710,7 @@ Class TeenDeviler : HDMobBase
         Death:
 			//TNT1 A 0 ThrustThing(angle*256/360, 0, 0, 0);
 			TWBA ABCB 1;
-			TNT1 A 0 A_PlaySound("Worm/Death");
+			TNT1 A 0 A_StartSound("Worm/Death");
 			TWBA ABCBABCBABCBABCB 1;
 			DEAD AAAA 1;
 			DEAD BBBB 1;
@@ -830,7 +830,7 @@ Class TJawLand : Actor
     {
     Spawn:
 		JAWJ A 1;
-		TNT1 A 0 A_PlaySound("Worm/Splat");
+		TNT1 A 0 A_StartSound("Worm/Splat");
         goto Splat;
 	Splat:
 		JAWJ A 1;

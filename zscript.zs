@@ -8,6 +8,3 @@ version "4.5"
 #include "zscript/DevilerAdult.zs"
 //Multi-class useful stuff
 #include "zscript/MultimonsterGenerics.zs"
-
-
-
