@@ -1,7 +1,0 @@
-GameInfo
-{
-	AddEventHandlers = "HDestDiabloniumSpawner"
-	//AddEventHandlers = "DevilerJuniorHandler"
-}
-
-include "Diabdoomednums.txt"

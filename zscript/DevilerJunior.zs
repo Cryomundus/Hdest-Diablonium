@@ -234,7 +234,7 @@ Class BabyDeviler : HDMobBase
 		+pushable
 		+hdmobbase.climber
 		+hdmobbase.climbpastdropoff
-		Obituary "%o was broiled by a Junior Deviler." ;
+		Obituary "$OB_BABYDEVILER" ;
 		health 45;
 		radius 16;
 		height 12;
@@ -259,7 +259,7 @@ Class BabyDeviler : HDMobBase
 		translation "208:223=19:31", "16:47=172:191", "160:167=174:191", "15:15=44:44", "238:238=189:189", "63:79=177:191";
 		damagefactor "Thermal",0; //devilers as a whole originated in a highly volcanic planet, they're literally immune to heat.
 		damagefactor "hot",0; //similarly, takes no damage if on fire.
-		tag "Baby Deviler";
+		tag "$TAG_BABYDEVILER";
 	}
 	
 			void A_LilDevilBabBite()
@@ -519,7 +519,7 @@ Class BabyDeviler : HDMobBase
 		NormalJump:
 				BWRM A 0 A_jumpIfCloser(60,"Melee");
     			BWRM A 1 A_FaceTarget;
-				TNT1 A 0 A_PlaySound("Worm/Hurt");
+				TNT1 A 0 A_StartSound("Worm/Hurt");
 				BWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
 				TNT1 A 0 ThrustThing(angle*256/360, 4, 0, 0);
 				//TNT1 A 0 A_TryWimpyLatch;
@@ -535,7 +535,7 @@ Class BabyDeviler : HDMobBase
 		Lunge:
 				BWRM A 0 A_jumpIfCloser(60,"Melee");
     			BWRM A 1 A_FaceTarget;
-				TNT1 A 0 A_PlaySound("Worm/Hurt");
+				TNT1 A 0 A_StartSound("Worm/Hurt");
 				BWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
 				TNT1 A 0 ThrustThing(angle*256/360, 16, 0, 0);
 				//BWRM A 1 A_TryWimpyLatch;
@@ -700,7 +700,7 @@ Class BabyDeviler : HDMobBase
         Death:
 				//TNT1 A 0 ThrustThing(angle*256/360, 0, 0, 0);
 				TWBA ABCB 1;
-				TNT1 A 0 A_PlaySound("Worm/Death");
+				TNT1 A 0 A_StartSound("Worm/Death");
 				TWBA ABCBABCBABCBABCB 1;
 				DEAD AAAA 1;
 				DEAD BBBB 1;
@@ -1050,7 +1050,7 @@ Class BFlesh1 : Actor
     {
     Spawn:
         FLE3 A 1;
-        TNT1 A 0 A_PlaySound("Worm/Splat");
+        TNT1 A 0 A_StartSound("Worm/Splat");
         goto Splat;
 	Splat:
 			FLE3 A 1;
@@ -1069,7 +1069,7 @@ Class BFlesh2 : Actor
     {
     Spawn:
         FLE2 A 1;
-        TNT1 A 0 A_PlaySound("Worm/Splat");
+        TNT1 A 0 A_StartSound("Worm/Splat");
         goto Splat;
 	Splat:
 			FLE2 A 1;
@@ -1088,7 +1088,7 @@ Class BFlesh3 : Actor
     {
     Spawn:
         FLE1 A 1;
-        TNT1 A 0 A_PlaySound("Worm/Splat");
+        TNT1 A 0 A_StartSound("Worm/Splat");
         goto Splat;
 	Splat:
 			FLE1 A 1;
@@ -1107,7 +1107,7 @@ Class BFlesh4 : Actor
     {
     Spawn:
         FLE4 A 1;
-			TNT1 A 0 A_PlaySound("Worm/Splat");
+			TNT1 A 0 A_StartSound("Worm/Splat");
         goto Splat;
 	Splat:
 			FLE4 A 1;
@@ -1156,7 +1156,7 @@ Class BJawLand : Actor
     {
     Spawn:
 			JAWJ A 1;
-			TNT1 A 0 A_PlaySound("Worm/Splat");
+			TNT1 A 0 A_StartSound("Worm/Splat");
         goto Splat;
 	Splat:
 			JAWJ A 1;

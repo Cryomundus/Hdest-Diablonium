@@ -207,7 +207,7 @@ Class SkullSpit :  HDActor
 		mass 1;
 		accuracy 300;
 		stamina 5;
-		woundhealth 0.2;
+		woundhealth 1.0;
 		
 		Radius 2;
 		Height 4;

@@ -1,4 +1,4 @@
-version "4.5"
+version "4.10"
 #include "zscript/HDestDiabloniumSpawner.zs"
 
 #include "zscript/possessedskullcombo.zs"
@@ -8,6 +8,3 @@ version "4.5"
 #include "zscript/DevilerAdult.zs"
 //Multi-class useful stuff
 #include "zscript/MultimonsterGenerics.zs"
-
-
-

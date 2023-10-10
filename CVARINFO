@@ -1,0 +1,26 @@
+// Most of these are server variables so in a multiplayer session they can be synced to other players.
+// Every enemy has a comment before its cvars based on its name in-game for organization. - [Ted]
+
+// NOTE: Values need to either be -1, 0, 2, 4, 9, 14, 19, 24, 49, 99, 149 or 199 to work for the spawners!
+// Anything else would require remaking the option values in the menus.
+// They'll still function in-game correctly, but the menus won't properly display them.
+// Stick to it please and have less bug reports to explain for pls. - [Ted]
+
+// Baby Deviler
+server int babydeviler_babuin_spawn_bias = 19;
+server int babydeviler_spectre_spawn_bias = 19;
+server bool babydeviler_persistent_spawning = false;
+
+// Teen Deviler
+server int teendeviler_imp_spawn_bias = 49;
+server bool teendeviler_persistent_spawning = false;
+
+// Adult Deviler
+server int adultdeviler_hellknight_spawn_bias = 49;
+server bool adultdeviler_persistent_spawning = false;
+
+// Wretched Ghoul
+server int wretchedghoul_lostsoul_spawn_bias = 49;
+server int wretchedghoul_babuin_spawn_bias = 49;
+server int wretchedghoul_spectre_spawn_bias = 49;
+server bool wretchedghoul_persistent_spawning = false;

@@ -234,7 +234,7 @@ Class AdultDeviler : HDMobBase
 	default
 	{
 		//$Category Worms;
-		Obituary "%o was incinerated by an Adult Deviler." ;
+		Obituary "$OB_ADULTDEVILER" ;
 		health 400;
 		hdmobbase.shields 150;
 		radius 14;
@@ -266,7 +266,7 @@ Class AdultDeviler : HDMobBase
 		meleerange 126;
 		minmissilechance 32;
 		translation "13:15=212:216", "0:3=165:167", "155:155=181:181", "80:111=171:191", "5:12=167:167", "236:239=216:223", "128:151=48:63", "64:79=208:223";
-		tag "Adult Deviler";
+		tag "$TAG_ADULTDEVILER";
 	}
 	
 			void A_BigBoyDevilerDiggyDiggy()
@@ -559,7 +559,7 @@ Class AdultDeviler : HDMobBase
 	NormalJump:
 			AWRM A 0 A_jumpIfCloser(60,"Melee");
     			AWRM A 1 A_FaceTarget;
-			AWRM A 0 A_PlaySound("Worm/Hurt");
+			AWRM A 0 A_StartSound("Worm/Hurt");
 			AWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
 			AWRM A 0 ThrustThing(angle*256/360, 4, 0, 0);
 			AWRM A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
@@ -575,7 +575,7 @@ Class AdultDeviler : HDMobBase
 		Lunge:
 			AWRM A 0 A_jumpIfCloser(60,"Melee");
     			AWRM A 1 A_FaceTarget;
-			AWRM A 0 A_PlaySound("Worm/Hurt");
+			AWRM A 0 A_StartSound("Worm/Hurt");
 			AWRM A 0 ThrustThingZ (0, random(6,18), 0, 0);
 			AWRM A 0 ThrustThing(angle*256/360, 16, 0, 0);
 			AWRM A 0 A_Jump(125,"GonnaBiteYerHeadOffRound2");
@@ -761,7 +761,7 @@ Class AdultDeviler : HDMobBase
         Death:
 			//TNT1 A 0 ThrustThing(angle*256/360, 0, 0, 0);
 			TWBA ABCB 1;
-			TNT1 A 0 A_PlaySound("Worm/Death");
+			TNT1 A 0 A_StartSound("Worm/Death");
 			TWAA ABCBABCBABCBABCB 1;
 			DEAD AAAA 1;
 			DEAD BBBB 1;
@@ -1034,7 +1034,7 @@ Class AJawLand : Actor
     {
     Spawn:
 		JAAL A 1;
-		TNT1 A 0 A_PlaySound("Worm/Splat");
+		TNT1 A 0 A_StartSound("Worm/Splat");
         goto Splat;
 	Splat:
 		JAAL A 1;

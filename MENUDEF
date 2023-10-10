@@ -1,0 +1,152 @@
+// Spawn Bias (for enemies that do replace their replacees)
+OptionValue "SpawnBias" {
+	-1,    "Disabled"
+	 0,    "Replace All"
+	 2,    "1 in 3"
+	 4,    "1 in 5"
+	 9,    "1 in 10"
+	 14,   "1 in 15"
+	 19,   "1 in 20"
+	 24,   "1 in 25"
+	 49,   "1 in 50"
+	 99,   "1 in 100"
+	 149,  "1 in 150"
+	 199,  "1 in 200"
+}
+
+OptionMenu "HDDiabloniumMenu"
+{
+    StaticText "$MENU_ENEMIES_TITLE", "Fire"
+	StaticText ""
+    Submenu "$TAG_BABYDEVILER", "babydevilerSpawning", 0, 1
+	StaticText ""
+    Submenu "$TAG_TEENDEVILER", "teendevilerSpawning", 0, 1
+	StaticText ""
+    Submenu "$TAG_ADULTDEVILER", "adultdevilerSpawning", 0, 1
+	StaticText ""
+    Submenu "$TAG_WRETCHEDGHOUL", "wretchedghoulSpawning", 0, 1
+	StaticText ""
+
+	StaticText "$MENU_RESETOPTIONS_TITLE", "Red"
+	StaticText ""
+	SafeCommand "$DIABLONIUM_RESETALLOPTIONS", "Diablonium_Reset_Cvars"
+}
+
+AddOptionMenu "OptionsMenu" {
+	Submenu "$DIABLONIUM_MENU", "HDDiabloniumMenu"
+}
+
+AddOptionMenu "HDAddonMenu" {
+	Submenu "$DIABLONIUM_MENU", "HDDiabloniumMenu"
+}
+
+// Enemies
+
+// Baby Deviler
+OptionMenu "babydevilerSpawning" {
+    Title "$MENU_BABYDEVILER_TITLE"
+   	StaticText "$MENU_NOTICE", "Fire"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "White"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "White"
+    StaticText ""
+
+	StaticText "$MENU_SPAWNOPTIONS", "Fire"
+    StaticText "$MENU_BABYDEVILER_BABUIN_SPAWNTEXT", "White"
+	Option "$MENU_ENEMYSPAWNRATE", "babydeviler_babuin_spawn_bias", "SpawnBias"
+	SafeCommand "$MENU_RESETENEMY", "resetcvar babydeviler_babuin_spawn_bias"
+    StaticText "$MENU_BABYDEVILER_SPECTRE_SPAWNTEXT", "White"
+	Option "$MENU_ENEMYSPAWNRATE", "babydeviler_spectre_spawn_bias", "SpawnBias"
+	SafeCommand "$MENU_RESETENEMY", "resetcvar babydeviler_spectre_spawn_bias"
+ 	StaticText ""
+
+	StaticText "$MENU_PERSISTENCYOPTIONS", "Fire"
+    StaticText "$MENU_PERSISTENCY_TEXT", "White"
+	Option "$MENU_PERSISTENCY", "babydeviler_persistent_spawning", "OnOff"
+	SafeCommand "$MENU_RESETPERSISTENCY", "resetcvar babydeviler_persistent_spawning"
+ 	StaticText ""
+   	StaticText ""
+
+	StaticText "$MENU_RESETOPTIONS", "Fire"
+	SafeCommand "$MENU_RESETALLOPTIONS", "babydeviler_reset_cvars"
+}
+
+// Teen Deviler
+OptionMenu "teendevilerSpawning" {
+    Title "$MENU_TEENDEVILER_TITLE"
+   	StaticText "$MENU_NOTICE", "Fire"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "White"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "White"
+    StaticText ""
+
+	StaticText "$MENU_SPAWNOPTIONS", "Fire"
+    StaticText "$MENU_TEENDEVILER_IMP_SPAWNTEXT", "White"
+	Option "$MENU_ENEMYSPAWNRATE", "teendeviler_imp_spawn_bias", "SpawnBias"
+	SafeCommand "$MENU_RESETENEMY", "resetcvar teendeviler_imp_spawn_bias"
+ 	StaticText ""
+
+	StaticText "$MENU_PERSISTENCYOPTIONS", "Fire"
+    StaticText "$MENU_PERSISTENCY_TEXT", "White"
+	Option "$MENU_PERSISTENCY", "teendeviler_persistent_spawning", "OnOff"
+	SafeCommand "$MENU_RESETPERSISTENCY", "resetcvar teendeviler_persistent_spawning"
+ 	StaticText ""
+   	StaticText ""
+
+	StaticText "$MENU_RESETOPTIONS", "Fire"
+	SafeCommand "$MENU_RESETALLOPTIONS", "teendeviler_reset_cvars"
+}
+
+// Adult Deviler
+OptionMenu "adultdevilerSpawning" {
+    Title "$MENU_ADULTDEVILER_TITLE"
+   	StaticText "$MENU_NOTICE", "Fire"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "White"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "White"
+    StaticText ""
+
+	StaticText "$MENU_SPAWNOPTIONS", "Fire"
+    StaticText "$MENU_ADULTDEVILER_HELLKNIGHT_SPAWNTEXT", "White"
+	Option "$MENU_ENEMYSPAWNRATE", "adultdeviler_hellknight_spawn_bias", "SpawnBias"
+	SafeCommand "$MENU_RESETENEMY", "resetcvar adultdeviler_hellknight_spawn_bias"
+ 	StaticText ""
+
+	StaticText "$MENU_PERSISTENCYOPTIONS", "Fire"
+    StaticText "$MENU_PERSISTENCY_TEXT", "White"
+	Option "$MENU_PERSISTENCY", "adultdeviler_persistent_spawning", "OnOff"
+	SafeCommand "$MENU_RESETPERSISTENCY", "resetcvar adultdeviler_persistent_spawning"
+ 	StaticText ""
+   	StaticText ""
+
+	StaticText "$MENU_RESETOPTIONS", "Fire"
+	SafeCommand "$MENU_RESETALLOPTIONS", "adultdeviler_reset_cvars"
+}
+
+// Wretched Ghoul
+OptionMenu "wretchedghoulSpawning" {
+    Title "$MENU_WRETCHEDGHOUL_TITLE"
+   	StaticText "$MENU_NOTICE", "Fire"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "White"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "White"
+    StaticText ""
+
+	StaticText "$MENU_SPAWNOPTIONS", "Fire"
+    StaticText "$MENU_WRETCHEDGHOUL_LOSTSOUL_SPAWNTEXT", "White"
+	Option "$MENU_ENEMYSPAWNRATE", "wretchedghoul_lostsoul_spawn_bias", "SpawnBias"
+	SafeCommand "$MENU_RESETENEMY", "resetcvar wretchedghoul_lostsoul_spawn_bias"
+    StaticText "$MENU_WRETCHEDGHOUL_BABUIN_SPAWNTEXT", "White"
+	Option "$MENU_ENEMYSPAWNRATE", "wretchedghoul_babuin_spawn_bias", "SpawnBias"
+	SafeCommand "$MENU_RESETENEMY", "resetcvar wretchedghoul_babuin_spawn_bias"
+    StaticText "$MENU_WRETCHEDGHOUL_SPECTRE_SPAWNTEXT", "White"
+	Option "$MENU_ENEMYSPAWNRATE", "wretchedghoul_spectre_spawn_bias", "SpawnBias"
+	SafeCommand "$MENU_RESETENEMY", "resetcvar wretchedghoul_spectre_spawn_bias"
+ 	StaticText ""
+
+	StaticText "$MENU_PERSISTENCYOPTIONS", "Fire"
+    StaticText "$MENU_PERSISTENCY_TEXT", "White"
+	Option "$MENU_PERSISTENCY", "wretchedghoul_persistent_spawning", "OnOff"
+	SafeCommand "$MENU_RESETPERSISTENCY", "resetcvar wretchedghoul_persistent_spawning"
+ 	StaticText ""
+   	StaticText ""
+
+	StaticText "$MENU_RESETOPTIONS", "Fire"
+	SafeCommand "$MENU_RESETALLOPTIONS", "wretchedghoul_reset_cvars"
+}

@@ -52,7 +52,8 @@ Class WretchedGhoul : HDMobBase
 		PainSound "wpain";
 		DeathSound "wdeath";
 		ActiveSound "widle";
-		Obituary "%o was ripped apart by a Wretched." ;
+		Obituary "$OB_WRETCHEDGHOUL";
+		Tag "$TAG_WRETCHEDGHOUL";
 		meleerange 126;
 		minmissilechance 32;
 		
@@ -493,7 +494,7 @@ Class Ghostball : HDActor
 		mass 1;
 		accuracy 300;
 		stamina 5;
-		woundhealth 0.2;
+		woundhealth 1.0;
 		Radius 4;
 		Height 6;
 		Speed 38;
@@ -527,7 +528,7 @@ Class Invisismack : HDActor
 		mass 1;
 		accuracy 300;
 		stamina 5;
-		woundhealth 0.2;
+		woundhealth 1.0;
 		Radius 4;
 		Height 6;
 		Speed 28;
@@ -587,7 +588,7 @@ Class CorpseWithThePowerOfFakingDeathBalls : HDActor
 	{
 	spawn:
 		TNT1 A 0 A_countdown;
-		GBOM DCBEADCBEADCBEA 1 bright nodelay A_FadeIn(0.1);
+		GBOM DCBEADCBEADCBEA 1 bright A_FadeIn(0.1);
 		GBOM DCBEA 1 
 			{
 			gravity=0.7;

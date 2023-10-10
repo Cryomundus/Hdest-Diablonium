@@ -4,7 +4,7 @@ flickerlight  Wretched
     size 12
 	secondarySize 18
 } 
-object Wretched
+object WretchedGhoul
 {
     Frame GHST { light Wretched }
 }
@@ -15,10 +15,11 @@ pulselight BloodghostPickup
     secondarySize 20
     interval 5
 } 
-object GhostHealthBonus
+// I don't know what this is for but I'm gonna comment it out as it's causing a script error. - [Ted]
+/*object GhostHealthBonus
 {
     Frame GHPK { light BloodghostPickup }
-}
+}*/
 pulselight BloodghostBall
 {
     color 256 0 0
