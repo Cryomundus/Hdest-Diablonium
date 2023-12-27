@@ -172,7 +172,7 @@ class HDDiabloniumEnemyHandler : EventHandler {
 		// Adult Deviler
 		Array<HDDiabloniumSpawnItemEntry> spawns_adultdeviler;
 		spawns_adultdeviler.push(addItemEntry('PainBringer', adultdeviler_hellknight_spawn_bias));
-		addItem('TeenDeviler', spawns_adultdeviler, adultdeviler_persistent_spawning);
+		addItem('AdultDeviler', spawns_adultdeviler, adultdeviler_persistent_spawning);
 
 		// Wretched Ghoul
 		Array<HDDiabloniumSpawnItemEntry> spawns_wretchedghoul;
