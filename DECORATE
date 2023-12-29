@@ -1,2 +1,2 @@
-#include decorate/HDestSkullColumnReplacer.dec
-#include decorate/HDMiscellanousStuff.dec
+#include source/HDestSkullColumnReplacer.dec
+#include source/HDMiscellanousStuff.dec
