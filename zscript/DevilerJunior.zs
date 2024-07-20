@@ -824,10 +824,10 @@ class HDWimpyFireBall:HDFireball{
 						//HEAD SHOT
 						if(
 							pos.z-tracer.pos.z>tracer.height*0.8
-							&&!(tracer is "Cenobite")
+							&&!(tracer is "FlyZapper")
 							&&!(tracer is "Spiderdemon")
 							&&!(tracer is "Manticore")
-							&&!(tracer is "SkullSpitter")
+							&&!(tracer is "FlySpitter")
 							&&!(tracer is "FlyingSkull")
 							&&!(tracer is "Putto")
 							&&!(tracer is "Yokai")
