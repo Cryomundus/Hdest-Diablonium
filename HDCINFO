@@ -1,0 +1,22 @@
+// Baby Deviler Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "DemonReplaces", "name": "BabyDeviler", "weight": "#babydeviler_babuin_spawn_bias", "persists": "#babydeviler_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "SpectreReplaces", "name": "BabyDeviler", "weight": "#babydeviler_spectre_spawn_bias", "persists": "#babydeviler_persistent_spawning" }
+
+// Teen Deviler Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "DoomImpReplaces", "name": "TeenDeviler", "weight": "#teendeviler_imp_spawn_bias", "persists": "#teendeviler_persistent_spawning" }
+
+// Adult Deviler Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "HellKnightReplaces", "name": "AdultDeviler", "weight": "#adultdeviler_hellknight_spawn_bias", "persists": "#adultdeviler_persistent_spawning" }
+
+// Wretched Ghoul Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "LostSoulReplaces", "name": "WretchedGhoul", "weight": "#wretchedghoul_lostsoul_spawn_bias", "persists": "#wretchedghoul_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "DemonReplaces", "name": "WretchedGhoul", "weight": "#wretchedghoul_babuin_spawn_bias", "persists": "#wretchedghoul_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "SpectreReplaces", "name": "WretchedGhoul", "weight": "#wretchedghoul_specbabuin_spawn_bias", "persists": "#wretchedghoul_persistent_spawning" }
+
+// Fake Skull Column Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "SkullColumnReplaces", "name": "FakePosSkulCol", "weight": "0.25", "persists": "true" }
+
+// TODO: Remove?
+// addSpawnTableNestedEntry => { "tableName": "SkullColumnReplaces", "name": "Diablonium.SkullColumn", "weight": "1.0", "persists": "true" }
+// addSpawnTableSingleEntry => { "tableName": "Diablonium.SkullColumn", "name": "HarmlessSkulCol", "weight": "75", "persists": "true" }
+// addSpawnTableSingleEntry => { "tableName": "Diablonium.SkullColumn", "name": "FakePosSkulCol", "weight": "25", "persists": "true" }
