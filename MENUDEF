@@ -36,10 +36,10 @@ OptionMenu "babydevilerSpawning" {
 
 	StaticText "$MENU_SPAWNOPTIONS", "Fire"
     StaticText "$MENU_BABYDEVILER_BABUIN_SPAWNTEXT", "White"
-	ScaleSlider "$MENU_ENEMYSPAWNRATE", "babydeviler_babuin_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+	Slider "$MENU_ENEMYSPAWNRATE", "babydeviler_babuin_spawn_bias", 0.0, 100, .01, 2
 	SafeCommand "$MENU_RESETENEMY", "resetcvar babydeviler_babuin_spawn_bias"
     StaticText "$MENU_BABYDEVILER_SPECTRE_SPAWNTEXT", "White"
-	ScaleSlider "$MENU_ENEMYSPAWNRATE", "babydeviler_spectre_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+	Slider "$MENU_ENEMYSPAWNRATE", "babydeviler_spectre_spawn_bias", 0.0, 100, .01, 2
 	SafeCommand "$MENU_RESETENEMY", "resetcvar babydeviler_spectre_spawn_bias"
  	StaticText ""
 
@@ -64,7 +64,7 @@ OptionMenu "teendevilerSpawning" {
 
 	StaticText "$MENU_SPAWNOPTIONS", "Fire"
     StaticText "$MENU_TEENDEVILER_IMP_SPAWNTEXT", "White"
-	ScaleSlider "$MENU_ENEMYSPAWNRATE", "teendeviler_imp_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+	Slider "$MENU_ENEMYSPAWNRATE", "teendeviler_imp_spawn_bias", 0.0, 100, .01, 2
 	SafeCommand "$MENU_RESETENEMY", "resetcvar teendeviler_imp_spawn_bias"
  	StaticText ""
 
@@ -89,7 +89,7 @@ OptionMenu "adultdevilerSpawning" {
 
 	StaticText "$MENU_SPAWNOPTIONS", "Fire"
     StaticText "$MENU_ADULTDEVILER_HELLKNIGHT_SPAWNTEXT", "White"
-	ScaleSlider "$MENU_ENEMYSPAWNRATE", "adultdeviler_hellknight_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+	Slider "$MENU_ENEMYSPAWNRATE", "adultdeviler_hellknight_spawn_bias", 0.0, 100, .01, 2
 	SafeCommand "$MENU_RESETENEMY", "resetcvar adultdeviler_hellknight_spawn_bias"
  	StaticText ""
 
@@ -114,13 +114,13 @@ OptionMenu "wretchedghoulSpawning" {
 
 	StaticText "$MENU_SPAWNOPTIONS", "Fire"
     StaticText "$MENU_WRETCHEDGHOUL_LOSTSOUL_SPAWNTEXT", "White"
-	ScaleSlider "$MENU_ENEMYSPAWNRATE", "wretchedghoul_lostsoul_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+	Slider "$MENU_ENEMYSPAWNRATE", "wretchedghoul_lostsoul_spawn_bias", 0.0, 100, .01, 2
 	SafeCommand "$MENU_RESETENEMY", "resetcvar wretchedghoul_lostsoul_spawn_bias"
     StaticText "$MENU_WRETCHEDGHOUL_BABUIN_SPAWNTEXT", "White"
-	ScaleSlider "$MENU_ENEMYSPAWNRATE", "wretchedghoul_babuin_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+	Slider "$MENU_ENEMYSPAWNRATE", "wretchedghoul_babuin_spawn_bias", 0.0, 100, .01, 2
 	SafeCommand "$MENU_RESETENEMY", "resetcvar wretchedghoul_babuin_spawn_bias"
     StaticText "$MENU_WRETCHEDGHOUL_SPECTRE_SPAWNTEXT", "White"
-	ScaleSlider "$MENU_ENEMYSPAWNRATE", "wretchedghoul_spectre_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+	Slider "$MENU_ENEMYSPAWNRATE", "wretchedghoul_spectre_spawn_bias", 0.0, 100, .01, 2
 	SafeCommand "$MENU_RESETENEMY", "resetcvar wretchedghoul_spectre_spawn_bias"
  	StaticText ""
 

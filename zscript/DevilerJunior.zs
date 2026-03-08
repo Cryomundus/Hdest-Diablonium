@@ -826,7 +826,7 @@ class HDWimpyFireBall:HDFireball{
 							pos.z-tracer.pos.z>tracer.height*0.8
 							&&!(tracer is "FlyZapper")
 							&&!(tracer is "Spiderdemon")
-							&&!(tracer is "Manticore")
+							&&!(tracer is "Balor")
 							&&!(tracer is "FlySpitter")
 							&&!(tracer is "FlyingSkull")
 							&&!(tracer is "Putto")
