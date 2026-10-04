@@ -821,6 +821,7 @@ class HDWimpyFireBall:HDFireball{
 						inittz=tracer.pos.z;
 						initpos=tracer.pos-pos;
 
+						name skull = 'FlyingSkull';
 						//HEAD SHOT
 						if(
 							pos.z-tracer.pos.z>tracer.height*0.8
@@ -828,7 +829,7 @@ class HDWimpyFireBall:HDFireball{
 							&&!(tracer is "Spiderdemon")
 							&&!(tracer is "Balor")
 							&&!(tracer is "FlySpitter")
-							&&!(tracer is "FlyingSkull")
+							&&!(tracer is skull)
 							&&!(tracer is "Putto")
 							&&!(tracer is "Yokai")
 						){
